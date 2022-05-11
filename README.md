@@ -69,6 +69,8 @@ Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday an
 
 ## (3) Database Assembly
 
+Since the data used for this project is static, we chose not to figure out how to host the database in a location accessible to all team members. Instead, the database was used to further assemble and rearrange the data. Targeted datasets to be used for machine learning were then created by selecting the necessary columns and exporting the data as CSVs.
+
 1. The exported facilities and ratings data was loaded into Postgres, as-is aside from minor changes to column names.
 
 2. Once loaded, the Price Level and Status columns were moved from the Ratings to the Facilities table for more coherent data grouping
@@ -77,7 +79,7 @@ Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday an
 
 4. Inspections data was loaded, and the data from ineligible facilities was removed. 
 
-5. An Inspections table was created to house only the facility ID, inspection date, and inspection score from each individual inspection.
+5. An Inspections table was created to house only the facility ID, inspection date, and inspection score from each individual inspection. An inspection ID was generated as an identity column to help later in identifying violations observed during the same inspection.
 
 6. A dataset containing facility ID, inspection date, inspection score, rating, and total ratings was assembled and exported for use in the inital round of machine learning.
 
@@ -91,7 +93,7 @@ Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday an
 
         2. If the sum of violation points associated with the null rows from an inspection did not match the total inspection score, it is most likely that these violations were observed but not awarded their full point value. Since this could not be determined for certain, they were added to the Violations table with a status of "Assumed Out."
 
-![Database Diagram](Images/erd-1.png)
+![Database Diagram](Images/erd-2.png)
 
 
 
