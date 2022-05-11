@@ -1,5 +1,7 @@
 # Boulder County Health Scores and Reviews
 
+![Team Rainbow Unicorn Kitty](Images/yeah.jpg)
+
 ## Background
 
 Members of the group have worked in the restaurant industry and have experience with the inspection process. We thought it would be interesting ot build a model to test the relationship between a restaurant's health inspection score and its customer rating on Google. 
