@@ -1,4 +1,3 @@
-/*
 --create tables
 
 create table if not exists facilities
@@ -60,6 +59,30 @@ where facility_category not like '%SERVICE%'
 order by facility_category, facility_type
 ;
 
+
+--move price_level column to facilities
+alter table facilities
+add column price_level int
+;
+
+update facilities f
+set price_level = (select r.price_level
+				   from ratings r
+				   where f.facility_id = r.facility_id)
+;
+
+select * from facilities 
+where price_level is null
+;
+
+alter table ratings
+drop column status,
+drop column price_level
+;
+
+commit;
+
+
 --remove unwanted categories
 select *
 into not_restaurants
@@ -88,29 +111,6 @@ where facility_id in
 commit;
 
 
---move price_level column to facilities
-alter table facilities
-add column price_level int
-;
-
-update facilities f
-set price_level = (select r.price_level
-				   from ratings r
-				   where f.facility_id = r.facility_id)
-;
-
-select * from facilities 
-where price_level is null
-;
-
-alter table ratings
-drop column status,
-drop column price_level
-;
-
-commit;
-
-
 --create table to import inspections data
 create table inspection_data
 	(facility_id varchar not null,
@@ -133,13 +133,28 @@ where facility_id not in
 	(select facility_id from facilities)
 ;
 
-create table inspections as
+
+create table inspections (
+	inspection_id integer primary key generated always as identity,
+	facility_id varchar not null,
+	inspection_date date not null,
+	inspection_score integer,
+	foreign key (facility_id) references facilities(facility_id)
+)
+;
+
+insert into inspections
+	(facility_id, 
+	 inspection_date,
+	 inspection_score)
 select distinct
 	facility_id,
 	inspection_date,
 	inspection_score
 from inspection_data
 ;
+
+select * from inspections;
 
 
 --create violations table with known 'Out of compliance' violations
@@ -298,11 +313,27 @@ from
 
 select *
 from violations
+where violation_status is null
 order by facility_id, inspection_date desc
 ;
 
+alter table violations
+	add column inspection_id integer
+;
+
+update violations v
+set inspection_id = (select i.inspection_id
+					 from inspections i
+					 where v.facility_id = i.facility_id
+					 	and v.inspection_date = i.inspection_date)
+;
+
+select * from violations;
+
+alter table violations
+	add constraint distfk foreign key (inspection_id) references inspections(inspection_id);
+
 select count(*) from violations;
-*/
 
 --create datasets for machine learning
 select distinct
@@ -317,7 +348,12 @@ from facilities f
 		on f.facility_id = i.facility_id
 	join ratings r
 		on f.facility_id = r.facility_id
-		
-	
+;
+
+
+select distinct violation_code from violations order by 1;
+
+
+
 
 
