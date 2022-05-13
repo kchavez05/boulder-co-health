@@ -335,23 +335,14 @@ alter table violations
 
 select count(*) from violations;
 
---create datasets for machine learning
+
+select distinct violation_code 
+from violations order by 1;
+
 select distinct
-	f.facility_id,
-	i.inspection_date,
-	i.inspection_score,
-	r.rating,
-	r.total_ratings
-into ml_ratings_vs_ins_scores
-from facilities f
-	join inspections i
-		on f.facility_id = i.facility_id
-	join ratings r
-		on f.facility_id = r.facility_id
-;
-
-
-select distinct violation_code from violations order by 1;
+	facility_id,
+	violation_code
+from violations
 
 
 
