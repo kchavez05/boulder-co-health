@@ -3,42 +3,42 @@ function init() {
     var selector = d3.select("#selDataset");
   
     // Use the list of sample names to populate the select options
-    d3.json(".json").then((data) => {
+    d3.json("web_facility_data.json").then((data) => {
       var facNames = data.names;
   
-      facNames.forEach((sample) => {
+      facNames.forEach((facility) => {
         selector
           .append("option")
-          .text(sample)
-          .property("value", sample);
+          .text(facility)
+          .property("value", facility);
       });
   
       // Use the first sample from the list to build the initial plots
       var firstFacility = facNames[0];
     //   buildCharts(firstSample);
-      buildMetadata(firstSample);
+      buildMetadata(firstFacility);
     });
   }
   
   // Initialize the dashboard
   init();
   
-  function optionChanged(newSample) {
+  function optionChanged(newFacility) {
     // Fetch new data each time a new sample is selected
-    buildMetadata(newSample);
+    buildMetadata(newFacility);
     // buildCharts(newSample);
     
   }
   
-  // Demographics Panel 
-  function buildMetadata(sample) {
-    d3.json("samples.json").then((data) => {
+  // Facility Data Panel 
+  function buildMetadata(facility) {
+    d3.json("web_facility_data.json").then((data) => {
       var metadata = data.metadata;
-      // Filter the data for the object with the desired sample number
-      var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+      // Filter the data for the object with the desired facility name
+      var resultArray = metadata.filter(facObj => facObj.facility_name == facility);
       var result = resultArray[0];
-      // Use d3 to select the panel with id of `#sample-metadata`
-      var PANEL = d3.select("#sample-metadata");
+      // Use d3 to select the panel with id of `#fac-metadata`
+      var PANEL = d3.select("#fac-metadata");
   
       // Use `.html("") to clear any existing metadata
       PANEL.html("");
