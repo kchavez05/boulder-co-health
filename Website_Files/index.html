@@ -12,26 +12,25 @@
 <body>
     <div class="jumbotron"><h1>Hello, world!</h1></div>
     <!-- Explore the Dataset -->
-        <!-- js for data exploiration // might need the data in a json? -->
+        <!-- js for data exploration // might need the data in a json? -->
         <center>
             <div class="row">
-              <div class="col-md-2 col-sm-2 col-xs-auto">
                 <div class="well">
-                  <h5>Test Subject ID No.:</h5>
+                  <h5>Select a Restaurant</h5>
                   <select id="selDataset" onchange="optionChanged(this.value)"></select>
                 </div>
                 <div class="panel panel-primary">
                   <div class="panel-heading">
-                    <h3 class="panel-title">Demographic Info</h3>
+                    <h3 class="panel-title">Facility Data</h3>
                   </div>
                   <div id="sample-metadata" class="panel-body" onchange="buildMetadata(this.value)"></div>
                 </div>
-              </div>
             </div>
         <center>      
     <!-- Tableau Embeds -->
     <!-- Predictor -->
 
   <!-- Custom JS -->
+  <script src="js/app.js"></script>
 </body>
 </html>
