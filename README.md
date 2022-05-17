@@ -100,7 +100,7 @@ Since the data used for this project is static, we chose not to figure out how t
 ## (4) Deployed Machine Learning Models
 #### Decision Tree 
 
-    The Boulder County Health Inspections Scores were obtained. The features selected for the first analysis were the Health Inspection Score, Facility Type and Facility Category. These features were used to train the model in trying to predict the Yelp Rating per facility.
+The Boulder County Health Inspections Scores were obtained. The features selected for the first analysis were the Health Inspection Score, Facility Type and Facility Category. These features were used to train the model in trying to predict the Yelp Rating per facility.
 
 The first step in engineering the features for the machine learning model used the filtered dataset to:
 
@@ -109,10 +109,11 @@ The first step in engineering the features for the machine learning model used t
     - This was difficult to eliminate the duplicate rows without losing details (pivot table and merge)
  - Bin the averaged health inspection scores to match the Health Department ratings
  - Create randomized Yelp Ratings to test the model
- - Use Random Forest model as it is fast, simple and flexible
- - Easy to use during the initial model development process, to see how it performs
- - Provides a good indicator of the importance it assigns to features
- - Limitations include: fast to train, but quite slow to create predictions once they are trained
+ - Compare different ML models: Logistic Regression, SVM, Random Forest, AdaBoost. 
+ - Random Forest model was used to engineer the models as it is fast, simple and flexible
+ - - Easy to use during the initial model development process, to see how it performs
+ - - Provides a good indicator of the importance it assigns to features
+ - - Limitations include: fast to train, but quite slow to create predictions once they are trained
  - May need to switch to a neural network, for the second phase which has a lot of different feature types
 
 
@@ -126,4 +127,4 @@ category of facility
 
 ## Results
 
-## Reccomendations?
+## Recomendations?
