@@ -335,23 +335,49 @@ alter table violations
 
 select count(*) from violations;
 
---create datasets for machine learning
-select distinct
-	f.facility_id,
-	i.inspection_date,
-	i.inspection_score,
-	r.rating,
-	r.total_ratings
-into ml_ratings_vs_ins_scores
-from facilities f
-	join inspections i
-		on f.facility_id = i.facility_id
-	join ratings r
-		on f.facility_id = r.facility_id
+
+select distinct violation_code 
+from violations 
+order by 1
 ;
 
+create table violations_crosswalk
+	(old_code varchar,
+	 new_code varchar not null,
+	 violation_category integer not null,
+	 vcat_title varchar not null)
+;
 
-select distinct violation_code from violations order by 1;
+select distinct
+	v.facility_id,
+	v.inspection_date,
+	v.inspection_id,
+	case
+		when cw.new_code is null then v.violation_code
+		else cw.new_code
+		end violation_code_norm,
+	v.violation_code,
+	v.violation_status,
+	case 
+		when cw.new_code is null then cats.violation_category
+		else cw.violation_category
+		end violation_category,
+	case 
+		when cw.new_code is null then cats.vcat_title
+		else cw.vcat_title
+		end vcat_title,
+	v.inspection_score
+into violations_norm
+from violations v
+	left join violations_crosswalk cw
+		on v.violation_code = cw.old_code
+	left join violations_crosswalk cats
+		on v.violation_code = cats.new_code
+;
+
+select *
+from violations_norm
+order by 1,2;
 
 
 
