@@ -25,7 +25,7 @@ Our group selected the topic of health inspection scores from Boulder Country, C
 6. Create a Dashboard
 7. Build an Interactive Website to Display Findings
 
-Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday and Sunday meetings. Various other meetings depending on the workload and piece. General notes and notes from each meeting live in a shared Google document, and all other communication is done through a group slack channel.
+Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday and Sunday meetings. Various other meetings depending on the workload and piece. General notes and notes from each meeting live in a shared Google document, a Trello board and all other communication is done through a group slack channel.
 
 
 ## (1) Data Sources and Resources
@@ -122,7 +122,11 @@ potential features:
 type of facility
 category of facility
 
-
+## Presentation
+![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-1.JPG)
+![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-2.JPG)
+![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-3.JPG)
+![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-4.JPG)
 ## Summary
 
 ## Results
