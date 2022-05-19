@@ -25,23 +25,27 @@ Our group selected the topic of health inspection scores from Boulder Country, C
 6. Create a Dashboard
 7. Build an Interactive Website to Display Findings
 
-Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday and Sunday meetings. Various other meetings depending on the workload and piece. General notes and notes from each meeting live in a shared Google document, a Trello board and all other communication is done through a group slack channel.
+Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday and Sunday meetings. Various other meetings depending on the workload and piece. General notes and notes from each meeting live in a shared Google document, a Trello board and all other communication is done through a group slack channel as well as a project 
+Trello board.
 
 
 ## (1) Data Sources and Resources
 
 #### Boulder County Health Inspection Data 
-    - (https://www.bouldercounty.org/families/food/restaurant-inspection-data/)
-    - This dataset includes public state data for each restautant in boulder county
+
+    -   (https://www.bouldercounty.org/families/food/restaurant-inspection-data/)
+    -   This dataset includes public state data for each restautant in boulder county
     the datespan of the dataset is everything pre-2020, to eliminate COVID effects.
     the Boulder Inspection data includes a Facility ID as a unique identifier, which
     we also used throughout the project as each restaurants Unique ID.
 
 #### Rating and Location Data
-    - Latitude, longitude, and google restaurant rating provided through the Google API 
+    -   Latitude, longitude, and google restaurant rating provided through the Google API 
 
 #### Tools
-    -    Python, Pandas, SQL, Postgres, Google, SKLearn, Tableau, Google Docs and Slides 
+    -    Python, Pandas, SKLearn, Tensorflow
+    -    SQL, Postgres, QuickDBD
+    -    Google, Tableau, Google Docs and Slides
 
 
 ## (2) Scrubbing the data
@@ -49,7 +53,6 @@ Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday an
 1. Inspection data: basic filtering
 
     1. Filtered the health inspection data to look at only restaurants and only routine/regular restaurants inspections before 2020
-
 
 2. Google data: locations, ratings, price level
 
@@ -89,9 +92,14 @@ Since the data used for this project is static, we chose not to figure out how t
     
     B. Data was extrapolated for facilities with a non-zero inspection score (indicating some violations had been observed) but no violations with an "Out" status:
 
-        1. If the sum of violation points associated with the null rows from an inspection matched the total inspection score, the violations were added to the Violations table with an "Out" status, as they must have been the source of the inspection score.
+        1. If the sum of violation points associated with the null rows from an inspection 
+        matched the total inspection score, the violations were added to the Violations table 
+        with an "Out" status, as they must have been the source of the inspection score.
 
-        2. If the sum of violation points associated with the null rows from an inspection did not match the total inspection score, it is most likely that these violations were observed but not awarded their full point value. Since this could not be determined for certain, they were added to the Violations table with a status of "Assumed Out."
+        2. If the sum of violation points associated with the null rows from an inspection 
+        did not match the total inspection score, it is most likely that these violations 
+        were observed but not awarded their full point value. Since this could not be determined 
+        for certain, they were added to the Violations table with a status of "Assumed Out."
 
 ![Database Diagram](Images/erd-2.png)
 
@@ -119,7 +127,7 @@ The first step in engineering the features for the machine learning model used t
  - Limitations include: fast to train, but quite slow to create predictions once they are trained
  - May need to switch to a neural network, for the second phase which has a lot of different feature types
 
- The google scored were broken into two categories, ... and .... based on the distribution of the average google rating below, with 4.
+ The google scored were broken into two categories, ... and .... based on the distribution of the average google rating below, with 4.45 being the driving the two categories.
 
 ![Distribution Diagram](Images/google_dist.png)
 
@@ -128,10 +136,12 @@ The first step in engineering the features for the machine learning model used t
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-2.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-3.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-4.JPG)
+
+
 ## Summary
 Overall, the machine learning model can predict the the google rating with ~70% accuracy. However, reversing the input and output does not yield a model that can predict any accuratecy. This means that the model cannot predict the health inspection score by using the google rating as an input.
 
-
+A second analysis dives into if there are any violation categories in particular which drive a stronger correlation with a lower google rating. To get an idea of the number of times the violation was was issued by category comapred to the sum of the inspection score points as a result. Not all violations are treated equally in terms of final inspection score.
 
 
 ![Violation breakdown](Images/violation_categories.png)
