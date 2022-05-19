@@ -1,4 +1,4 @@
-/*
+
 --create datasets for machine learning
 select distinct
 	f.facility_id,
@@ -14,7 +14,8 @@ from facilities f
 		on f.facility_id = r.facility_idstat
 ;
 
---create 
+--create facility view for tableau
+drop view tableau_facility_data;
 create view tableau_facility_data as
 select distinct 
 	sub.facility_id,
@@ -25,7 +26,8 @@ select distinct
 	sub.rating,
 	sub.total_ratings,
 	sub.avg_inspection_score,
-	avg(sub.violations_count) over (partition by sub.facility_id) avg_violations_count
+	avg(sub.violations_count) over (partition by sub.facility_id) avg_violations_count,
+	inspection_count
 from (
 	select distinct
 		f.facility_id,
@@ -36,7 +38,8 @@ from (
 		r.rating,
 		r.total_ratings,
 		avg(v.inspection_score) over (partition by f.facility_id) avg_inspection_score,
-		count(v.violation_code) over (partition by v.inspection_id) violations_count
+		count(v.violation_code) over (partition by v.inspection_id) violations_count,
+		count(v.inspection_id) over (partition by v.facility_id) inspection_count
 	from facilities f
 		join ratings r
 			on f.facility_id = r.facility_id
@@ -46,268 +49,276 @@ from (
 order by 1
 ;
 
-select distinct 'v'||violation_code||' varchar ,' from violations order by 1;
+select distinct violation_code_norm||' int ,' from violations_norm order by 1;
 
-select * from violations;
 
 select distinct
 	facility_id,
 	max(case when coalesce(violation_code,0::varchar) = '01A' then 1 else 0 end) over (partition by facility_id)
 from violations;
-*/
 
-create view binary_violations as
+
+select * from violations_norm;
+
+--create pivot table of whether a facility has ever received a particular violation
+
+create table binary_violations_pivot as
 select *
 from crosstab(
 $$
 	select
 		facility_id,
-		violation_code,
+		violation_code_norm,
 		case when coalesce(count(distinct inspection_id),0) > 0 then 1 else 0 end
-	from violations
+	from violations_norm
 	group by
 		facility_id,
-		violation_code
+		violation_code_norm
 	order by 1
 $$,
 $$
-	select distinct violation_code
-	from violations
+	select distinct violation_code_norm
+	from violations_norm
 	order by 1
 $$
 )
 as
 	(facility_id varchar,
-	v01A varchar ,
-	v01B varchar ,
-	v01C varchar ,
-	v01D varchar ,
-	v01E varchar ,
-	v01F varchar ,
-	v02B varchar ,
-	v02C varchar ,
-	v02D varchar ,
-	v02E varchar ,
-	v02F varchar ,
-	v02G varchar ,
-	v03A varchar ,
-	v03B varchar ,
-	v03C varchar ,
-	v03D varchar ,
-	v03E varchar ,
-	v03F varchar ,
-	v03G varchar ,
-	v04A varchar ,
-	v04B varchar ,
-	v04C varchar ,
-	v05A varchar ,
-	v05B varchar ,
-	v05C varchar ,
-	v05D varchar ,
-	v06A varchar ,
-	v06B varchar ,
-	v06C varchar ,
-	v07A varchar ,
-	v07B varchar ,
-	v07C varchar ,
-	v08A varchar ,
-	v08B varchar ,
-	v08C varchar ,
-	v09A varchar ,
-	v09B varchar ,
-	v10A varchar ,
-	v10B varchar ,
-	v10C varchar ,
-	v11A varchar ,
-	v11B varchar ,
-	v11C varchar ,
-	v12A varchar ,
-	v12B varchar ,
-	v12C varchar ,
-	v12D varchar ,
-	v13A varchar ,
-	v13B varchar ,
-	v13C varchar ,
-	v14A varchar ,
-	v14B varchar ,
-	v14C varchar ,
-	v14D varchar ,
-	v14E varchar ,
-	v14F varchar ,
-	v14G varchar ,
-	v14I varchar ,
-	v15A varchar ,
-	v15B varchar ,
-	vFC01 varchar ,
-	vFC02 varchar ,
-	vFC03 varchar ,
-	vFC05 varchar ,
-	vFC06 varchar ,
-	vFC08 varchar ,
-	vFC09 varchar ,
-	vFC10 varchar ,
-	vFC11 varchar ,
-	vFC13 varchar ,
-	vFC14 varchar ,
-	vFC15 varchar ,
-	vFC16 varchar ,
-	vFC18 varchar ,
-	vFC19 varchar ,
-	vFC20 varchar ,
-	vFC21 varchar ,
-	vFC22 varchar ,
-	vFC23 varchar ,
-	vFC24 varchar ,
-	vFC25 varchar ,
-	vFC27 varchar ,
-	vFC28 varchar ,
-	vFC29 varchar ,
-	vFC33 varchar ,
-	vFC35 varchar ,
-	vFC36 varchar ,
-	vFC37 varchar ,
-	vFC38 varchar ,
-	vFC39 varchar ,
-	vFC40 varchar ,
-	vFC41 varchar ,
-	vFC42 varchar ,
-	vFC43 varchar ,
-	vFC45 varchar ,
-	vFC47 varchar ,
-	vFC48 varchar ,
-	vFC49 varchar ,
-	vFC50 varchar ,
-	vFC51 varchar ,
-	vFC52 varchar ,
-	vFC55 varchar ,
-	vFC56 varchar 
+	FC01 int ,
+	FC02 int ,
+	FC03 int ,
+	FC04 int ,
+	FC05 int ,
+	FC06 int ,
+	FC08 int ,
+	FC09 int ,
+	FC10 int ,
+	FC11 int ,
+	FC13 int ,
+	FC14 int ,
+	FC15 int ,
+	FC16 int ,
+	FC18 int ,
+	FC19 int ,
+	FC20 int ,
+	FC21 int ,
+	FC22 int ,
+	FC23 int ,
+	FC24 int ,
+	FC25 int ,
+	FC27 int ,
+	FC28 int ,
+	FC29 int ,
+	FC31 int ,
+	FC33 int ,
+	FC35 int ,
+	FC36 int ,
+	FC37 int ,
+	FC38 int ,
+	FC39 int ,
+	FC40 int ,
+	FC41 int ,
+	FC42 int ,
+	FC43 int ,
+	FC44 int ,
+	FC45 int ,
+	FC46 int ,
+	FC47 int ,
+	FC48 int ,
+	FC49 int ,
+	FC50 int ,
+	FC51 int ,
+	FC52 int ,
+	FC53 int ,
+	FC54 int ,
+	FC55 int ,
+	FC56 int ,
+	FC57 int 
 )
 ;
 
-create view violations_count as
+select * from binary_violations_pivot;
+select * from violations where violation_code = 'FC12';
+
+--create pivot table of the number of times a facility has received a particular violation
+drop table violations_count_pivot;
+create table violations_count_pivot as
 select *
 from crosstab(
 $$
 	select
 		facility_id,
-		violation_code,
-		count(distinct inspection_id))
-	from violations
+		violation_code_norm,
+		count(distinct inspection_id)
+	from violations_norm
 	group by
 		facility_id,
-		violation_code
+		violation_code_norm
 	order by 1
 $$,
 $$
-	select distinct violation_code
-	from violations
+	select distinct violation_code_norm
+	from violations_norm
 	order by 1
 $$
 )
 as
 	(facility_id varchar,
-	v01A varchar ,
-	v01B varchar ,
-	v01C varchar ,
-	v01D varchar ,
-	v01E varchar ,
-	v01F varchar ,
-	v02B varchar ,
-	v02C varchar ,
-	v02D varchar ,
-	v02E varchar ,
-	v02F varchar ,
-	v02G varchar ,
-	v03A varchar ,
-	v03B varchar ,
-	v03C varchar ,
-	v03D varchar ,
-	v03E varchar ,
-	v03F varchar ,
-	v03G varchar ,
-	v04A varchar ,
-	v04B varchar ,
-	v04C varchar ,
-	v05A varchar ,
-	v05B varchar ,
-	v05C varchar ,
-	v05D varchar ,
-	v06A varchar ,
-	v06B varchar ,
-	v06C varchar ,
-	v07A varchar ,
-	v07B varchar ,
-	v07C varchar ,
-	v08A varchar ,
-	v08B varchar ,
-	v08C varchar ,
-	v09A varchar ,
-	v09B varchar ,
-	v10A varchar ,
-	v10B varchar ,
-	v10C varchar ,
-	v11A varchar ,
-	v11B varchar ,
-	v11C varchar ,
-	v12A varchar ,
-	v12B varchar ,
-	v12C varchar ,
-	v12D varchar ,
-	v13A varchar ,
-	v13B varchar ,
-	v13C varchar ,
-	v14A varchar ,
-	v14B varchar ,
-	v14C varchar ,
-	v14D varchar ,
-	v14E varchar ,
-	v14F varchar ,
-	v14G varchar ,
-	v14I varchar ,
-	v15A varchar ,
-	v15B varchar ,
-	vFC01 varchar ,
-	vFC02 varchar ,
-	vFC03 varchar ,
-	vFC05 varchar ,
-	vFC06 varchar ,
-	vFC08 varchar ,
-	vFC09 varchar ,
-	vFC10 varchar ,
-	vFC11 varchar ,
-	vFC13 varchar ,
-	vFC14 varchar ,
-	vFC15 varchar ,
-	vFC16 varchar ,
-	vFC18 varchar ,
-	vFC19 varchar ,
-	vFC20 varchar ,
-	vFC21 varchar ,
-	vFC22 varchar ,
-	vFC23 varchar ,
-	vFC24 varchar ,
-	vFC25 varchar ,
-	vFC27 varchar ,
-	vFC28 varchar ,
-	vFC29 varchar ,
-	vFC33 varchar ,
-	vFC35 varchar ,
-	vFC36 varchar ,
-	vFC37 varchar ,
-	vFC38 varchar ,
-	vFC39 varchar ,
-	vFC40 varchar ,
-	vFC41 varchar ,
-	vFC42 varchar ,
-	vFC43 varchar ,
-	vFC45 varchar ,
-	vFC47 varchar ,
-	vFC48 varchar ,
-	vFC49 varchar ,
-	vFC50 varchar ,
-	vFC51 varchar ,
-	vFC52 varchar ,
-	vFC55 varchar ,
-	vFC56 varchar 
+	FC01 int ,
+	FC02 int ,
+	FC03 int ,
+	FC04 int ,
+	FC05 int ,
+	FC06 int ,
+	FC08 int ,
+	FC09 int ,
+	FC10 int ,
+	FC11 int ,
+	FC13 int ,
+	FC14 int ,
+	FC15 int ,
+	FC16 int ,
+	FC18 int ,
+	FC19 int ,
+	FC20 int ,
+	FC21 int ,
+	FC22 int ,
+	FC23 int ,
+	FC24 int ,
+	FC25 int ,
+	FC27 int ,
+	FC28 int ,
+	FC29 int ,
+	FC31 int ,
+	FC33 int ,
+	FC35 int ,
+	FC36 int ,
+	FC37 int ,
+	FC38 int ,
+	FC39 int ,
+	FC40 int ,
+	FC41 int ,
+	FC42 int ,
+	FC43 int ,
+	FC44 int ,
+	FC45 int ,
+	FC47 int ,
+	FC48 int ,
+	FC49 int ,
+	FC50 int ,
+	FC51 int ,
+	FC52 int ,
+	FC53 int ,
+	FC54 int ,
+	FC55 int ,
+	FC56 int ,
+	FC57 int 
 )
 ;
+select distinct violation_category from violations_norm order by 1;
+
+--create pivot table of whether a facility has ever received a violation of a particular category
+drop table binary_violation_cats_pivot;
+create table binary_violation_cats_pivot as
+select *
+from crosstab(
+$$
+	select
+		facility_id,
+		violation_category,
+		case when coalesce(count(distinct violation_category),0) > 0 then 1 else 0 end
+	from violations_norm
+	group by
+		facility_id,
+		violation_category
+	order by 1
+$$,
+$$
+	select distinct violation_category
+	from violations_norm
+	order by 1
+$$
+)
+as
+	(facility_id varchar,
+	 cat_1 int,
+	 cat_2 int,
+	 cat_3 int,
+	 cat_5 int,
+	 cat_6 int,
+	 cat_7 int,
+	 cat_8 int,
+	 cat_9 int,
+	 cat_10 int,
+	 cat_12 int,
+	 cat_13 int,
+	 cat_14 int)
+;
+
+--create pivot table of the number of times a facility has ever received a violation of a particular category
+drop table violation_cat_counts_pivot;
+create table violation_cat_counts_pivot as
+select *
+from crosstab(
+$$
+	select
+		facility_id,
+		violation_category,
+		count(distinct inspection_id)
+	from violations_norm
+	group by
+		facility_id,
+		violation_category
+	order by 1
+$$,
+$$
+	select distinct violation_category
+	from violations_norm
+	order by 1
+$$
+)
+as
+	(facility_id varchar,
+	 cat_1 int,
+	 cat_2 int,
+	 cat_3 int,
+	 cat_5 int,
+	 cat_6 int,
+	 cat_7 int,
+	 cat_8 int,
+	 cat_9 int,
+	 cat_10 int,
+	 cat_12 int,
+	 cat_13 int,
+	 cat_14 int)
+;
+
+select * from violation_cat_counts_pivot;
+select distinct
+	facility_id,
+	count(distinct inspection_id)
+from inspections
+group by facility_id;
+
+drop table violations_crosswalk_readable;
+select distinct
+	cw.violation_category,
+	cw.vcat_title category_title,
+	vn.violation_code new_code,
+	vn.violation new_code_title,
+	vo.violation_code old_code,
+	vo.violation old_code_title
+into violations_crosswalk_readable
+from violations_crosswalk cw
+	join inspection_data vo
+		on cw.old_code = vo.violation_code
+	join inspection_data vn
+		on cw.new_code = vn.violation_code
+order by 1,3,5
+;
+
+
+
+
+
+

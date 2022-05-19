@@ -1,3 +1,4 @@
+
 --create tables
 
 create table if not exists facilities
@@ -341,6 +342,8 @@ from violations
 order by 1
 ;
 
+
+drop table violations_crosswalk;
 create table violations_crosswalk
 	(old_code varchar,
 	 new_code varchar not null,
@@ -348,6 +351,7 @@ create table violations_crosswalk
 	 vcat_title varchar not null)
 ;
 
+drop table violations_norm;
 select distinct
 	v.facility_id,
 	v.inspection_date,
