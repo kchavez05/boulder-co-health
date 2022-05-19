@@ -70,6 +70,15 @@ Trello board.
 
     3. After inspecting datatypes and changing Inspection Date to a datetime datatype, the data was exported to a new CSV to be loaded into the database.
 
+Snapshot of the finalized dataset by County: 
+Average Rating
+Total Ratings
+Average Price Level
+Average Health Inspection Score
+Total Number of Violations
+
+![Data Snapshot](Images/quick_data_summary.png)
+
 ## (3) Database Assembly
 
 Since the data used for this project is static, we chose not to figure out how to host the database in a location accessible to all team members. Instead, the database was used to further assemble and rearrange the data. Targeted datasets to be used for machine learning were then created by selecting the necessary columns and exporting the data as CSVs.
