@@ -13,8 +13,8 @@
 ,FC42,1,food source
 ,FC14,1,food source
 ,FC32,1,food source
-02A,FC04,2,food source
-02B,FC04,2,food source
+02A,FC04,2,personnel
+02B,FC04,2,personnel
 02C,FC08,2,personnel
 02D,FC04,2,personnel
 02E,FC06,2,personnel
@@ -40,14 +40,14 @@
 ,FC35,3,food temperature control
 ,FC24,3,food temperature control
 05A,FC31,5,food temperature control
-05B,FC50,5,"water, sewage, plumbing"
-05C,FC51,5,"water, sewage, plumbing"
-14A,FC51,5,"water, sewage, plumbing"
-05D,FC52,5,"water, sewage, plumbing"
-06A,FC53,6,"toilets, handwashing"
-14I,FC53,6,"toilets, handwashing"
-06B,FC10,6,"toilets, handwashing"
-06C,FC10,6,"toilets, handwashing"
+05B,FC50,5,water/sewage/plumbing
+05C,FC51,5,water/sewage/plumbing
+14A,FC51,5,water/sewage/plumbing
+05D,FC52,5,water/sewage/plumbing
+06A,FC53,6,toilets/handwashing
+14I,FC53,6,toilets/handwashing
+06B,FC10,6,toilets/handwashing
+06C,FC10,6,toilets/handwashing
 07A,FC38,7,pest control
 07B,FC39,7,pest control
 07C,FC40,7,pest control
@@ -56,8 +56,8 @@
 08C,FC28,8,poisons/toxins
 09A,FC37,9,food labeling/protection
 09B,FC15,9,food labeling/protection
-10A,FC47,10,"equipment design, contstruction"
-10B,FC47,10,"equipment design, contstruction"
+10A,FC47,10,equipment design/contstruction
+10B,FC47,10,equipment design/contstruction
 10C,FC48,12,equipment/utensil cleaning
 11C,FC48,12,equipment/utensil cleaning
 04B,FC48,12,equipment/utensil cleaning
@@ -71,11 +71,11 @@
 13A,FC44,13,utensils
 15B,FC44,13,utensils
 13B,FC45,13,utensils
-13C,FC46,14,utensils
+13C,FC45,13,utensils
 ,FC43,13,utensils
 14B,FC54,14,physical facilities
 14D,FC56,14,physical facilities
-14E,FC57,15,physical facilities
+14E,FC57,14,physical facilities
 14G,FC55,14,physical facilities
 14C,FC55,14,physical facilities
 14F,FC55,14,physical facilities

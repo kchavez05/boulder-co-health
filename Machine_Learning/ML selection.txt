@@ -1,0 +1,10 @@
+# Classification Report
+
+Chirag Goyal in "How to choose an appropriate Machine Learning Algorithm for Data Science Projects?" July 2021, https://www.analyticsvidhya.com/blog/2021/07/how-to-choose-an-appropriate-ml-algorithm-data-science-projects/ recommends the following four criteria to select the most appropriate machine learning (ML) algorithm: the type of data (continuous or not), whether the task is a classification or regression problem, is the data labelled or unlabeled and the size of the dataset. Based on this advice, we tested four different machine learning algorithms to see which provided the highest accuracy. Below is the first test of the ML algorithm results when we tried to predict the classification of the Google ratings (1 to 5) based on the bucketed health scores (5 to 1) using two variables: type of facility and category of facility.
+
+The first comparisons showed an accuracy rate of 59% for the three selected algorithms. The three models compared were the Logistic Regression, Support Vector Machine and RandomForest.
+
+Next the classification was engineered to predict a High or Low score. This reduction in the number of possible caetgories raised the accuracy only about 10 points to 73% accuracy across the three selected models. Even applying a gradient boosting tree to the mix increased the prediction power very little to 75%.  
+
+Another tactic was to see the accuracy of predicting the Health Score from the Google Rating. These results were even less accurate than the previous task at less than 45% when trying to predict health scores (1 to 5) from Google Ratings (1 to 5). Interestingly, the Neural Network code completed for this code with 0% accuracy. 
+
