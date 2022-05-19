@@ -44,7 +44,7 @@ Trello board.
 
 #### Tools
     -    Python, Pandas, SKLearn, Tensorflow
-    -    SQL, Postgres, QuickDBD
+    -    SQL, Postgres, QuickDBD, Github
     -    Google, Tableau, Google Docs and Slides
 
 
@@ -136,6 +136,19 @@ The first step in engineering the features for the machine learning model used t
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-2.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-3.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-4.JPG)
+
+## (7) Dat Interactive Website
+ Website Build out :
+
+
+ Interactive Pieces:
+
+#### Ratings Dashboard
+Well, we do care about ratings, so howabout a useful rating oriented dashboard to narrow down the search for the next meal. A the size of the boxes represent the total number of ratings and the color scales along with the average google rating. Hovering over shows you the inspection score as well as the price designation on google.
+
+![Dashboard heatmap](Images/interactive_ratings_by_city.png)
+
+
 
 
 ## Summary
