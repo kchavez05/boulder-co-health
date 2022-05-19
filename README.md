@@ -103,24 +103,25 @@ Since the data used for this project is static, we chose not to figure out how t
 The Boulder County Health Inspections Scores were obtained. The features selected for the first analysis were the Health Inspection Score, Facility Type and Facility Category. These features were used to train the model in trying to predict the Yelp Rating per facility.
 
 The first step in engineering the features for the machine learning model used the filtered dataset to:
+The Boulder County Health Inspections Scores were obtained. The features selected for the first analysis were the Health Inspection Score, Facility Type and Facility Category. These features were used to train the model in trying to predict the Yelp Rating per facility.
+
+The first step in engineering the features for the machine learning model used the filtered dataset to:
 
  - Eliminate all location data so as not to overburden the model
  - Average the inspection scores for all routine and regular health inspections by facility
-    - This was difficult to eliminate the duplicate rows without losing details (pivot table and merge)
+ - This was difficult to eliminate the duplicate rows without losing details (pivot table and merge)
  - Bin the averaged health inspection scores to match the Health Department ratings
  - Create randomized Yelp Ratings to test the model
  - Compare different ML models: Logistic Regression, SVM, Random Forest, AdaBoost. 
  - Random Forest model was used to engineer the models as it is fast, simple and flexible
- - - Easy to use during the initial model development process, to see how it performs
- - - Provides a good indicator of the importance it assigns to features
- - - Limitations include: fast to train, but quite slow to create predictions once they are trained
+ - Easy to use during the initial model development process, to see how it performs
+ - Provides a good indicator of the importance it assigns to features
+ - Limitations include: fast to train, but quite slow to create predictions once they are trained
  - May need to switch to a neural network, for the second phase which has a lot of different feature types
 
+ The google scored were broken into two categories, ... and .... based on the distribution of the average google rating below, with 4.
 
-
-potential features:
-type of facility
-category of facility
+![Distribution Diagram](Images/google_dist.png)
 
 ## Presentation
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-1.JPG)
@@ -128,6 +129,14 @@ category of facility
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-3.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-4.JPG)
 ## Summary
+Overall, the machine learning model can predict the the google rating with ~70% accuracy. However, reversing the input and output does not yield a model that can predict any accuratecy. This means that the model cannot predict the health inspection score by using the google rating as an input.
+
+
+
+
+![Violation breakdown](Images/violation_categories.png)
+
+
 
 ## Results
 
