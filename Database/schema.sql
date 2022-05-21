@@ -1,3 +1,4 @@
+
 --create tables
 
 create table if not exists facilities
@@ -337,12 +338,50 @@ select count(*) from violations;
 
 
 select distinct violation_code 
-from violations order by 1;
+from violations 
+order by 1
+;
 
+
+drop table violations_crosswalk;
+create table violations_crosswalk
+	(old_code varchar,
+	 new_code varchar not null,
+	 violation_category integer not null,
+	 vcat_title varchar not null)
+;
+
+drop table violations_norm;
 select distinct
-	facility_id,
-	violation_code
-from violations
+	v.facility_id,
+	v.inspection_date,
+	v.inspection_id,
+	case
+		when cw.new_code is null then v.violation_code
+		else cw.new_code
+		end violation_code_norm,
+	v.violation_code,
+	v.violation_status,
+	case 
+		when cw.new_code is null then cats.violation_category
+		else cw.violation_category
+		end violation_category,
+	case 
+		when cw.new_code is null then cats.vcat_title
+		else cw.vcat_title
+		end vcat_title,
+	v.inspection_score
+into violations_norm
+from violations v
+	left join violations_crosswalk cw
+		on v.violation_code = cw.old_code
+	left join violations_crosswalk cats
+		on v.violation_code = cats.new_code
+;
+
+select *
+from violations_norm
+order by 1,2;
 
 
 

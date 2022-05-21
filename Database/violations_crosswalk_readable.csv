@@ -1,0 +1,62 @@
+violation_category,category_title,new_code,new_code_title,old_code,old_code_title
+1,food source,FC11,Food obtained from approved source,01A,Approved Source
+1,food source,FC13,"Food in good condition, safe, & unadulterated",01B,Wholesome Free of Spoilage
+1,food source,FC23,Proper date marking and disposition,01E,Date Marking
+1,food source,FC25,Consumer advisory provided for raw/undercooked food,01F,Consumer Advisory
+1,food source,FC29,Compliance with variance / specialized process / HACCP,01D,HACCP Plan
+1,food source,FC39,"Contamination prevented during food preparation, storage & display",01C,Cross Contamination
+2,personnel,FC03,"Management, food employee and conditional employee; knowledge, responsibilities and reporting",02F,Training Needed
+2,personnel,FC04,Proper use of restriction and exclusion,02A,Personnel With Infections Restricted
+2,personnel,FC04,Proper use of restriction and exclusion,02B,Wounds Properly Covered
+2,personnel,FC04,Proper use of restriction and exclusion,02D,Hygienic Practices
+2,personnel,FC06,"Proper eating, tasting, drinking, or tobacco use",02E,Smoking Eating Drinking
+2,personnel,FC08,Hands clean & properly washed,02C,Hands Washed As Needed
+2,personnel,FC09,No bare hand contact with RTE food or a pre-approved alternative procedure properly allowed,02G,No Bare Hand Contact
+2,personnel,FC40,Personal cleanliness,15A,Personnel: Clean Clothes Hair Restraints Authorizat
+3,food temperature control,FC18,Proper cooking time & temperatures,03D,Required Cooking Temperature
+3,food temperature control,FC19,Proper reheating procedures for hot holding,03B,Rapidly Reheat to 165 Degrees or Greater
+3,food temperature control,FC21,Proper hot holding temperatures,03C,Hot Hold at 135 Degrees Farenheit or Greater
+3,food temperature control,FC22,Proper cold holding temperatures,03E,Cold Hold at 41 Degrees or Less
+3,food temperature control,FC33,Proper cooling methods used; adequate equipment for temperature control,03A,Cooling Methods
+3,food temperature control,FC33,Proper cooling methods used; adequate equipment for temperature control,03G,Adequate Equipment to Maintain Food Temperatures
+3,food temperature control,FC36,Thermometer provided & accurate,03F,Food Thermometer
+3,food temperature control,FC36,Thermometer provided & accurate,11A,Refrigeration Units With Accurate Thermometers
+5,food temperature control,FC31,Water & ice from approved source,05A,Safe Water Source
+5,water/sewage/plumbing,FC50,Hot & cold water available; adequate pressure,05B,Hot and Cold Water Under Pressure
+5,water/sewage/plumbing,FC51,Plumbing installed; proper backflow devices,05C,Backflow Back Siphonage
+5,water/sewage/plumbing,FC51,Plumbing installed; proper backflow devices,14A,Plumbing Installed Maintained
+5,water/sewage/plumbing,FC52,Sewage & waste water properly disposed,05D,Sewage Disposal
+6,toilets/handwashing,FC10,Adequate handwashing sinks properly supplied and accessible,06B,Accessible
+6,toilets/handwashing,FC10,Adequate handwashing sinks properly supplied and accessible,06C,Soap and Drying Devices
+6,toilets/handwashing,FC53,"Toilet facilities: properly constructed, supplied, & cleaned",06A,Adequate Number Location Design
+6,toilets/handwashing,FC53,"Toilet facilities: properly constructed, supplied, & cleaned",14I,Physical Facilities Adequate Toilet Facilities
+7,pest control,FC38,"Insects, rodents, & animals not present",07A,Evidence of Insects or Rodents
+7,pest control,FC39,"Contamination prevented during food preparation, storage & display",07B,Pesticide Application
+7,pest control,FC40,Personal cleanliness,07C,Animals Prohibited
+8,poisons/toxins,FC28,"Toxic substances properly identified, stored & used",08A,Properly Stored
+8,poisons/toxins,FC28,"Toxic substances properly identified, stored & used",08B,Properly Labeled
+8,poisons/toxins,FC28,"Toxic substances properly identified, stored & used",08C,Properly Used
+9,food labeling/protection,FC15,Food separated and protected,09B,Food Protected from Contamination
+9,food labeling/protection,FC37,Food properly labeled; original container,09A,Original Container Properly Labeled
+10,equipment design/contstruction,FC47,"Food & non-food contact surfaces cleanable, properly designed, constructed, & used",10A,Food-Contact Surfaces Construction
+10,equipment design/contstruction,FC47,"Food & non-food contact surfaces cleanable, properly designed, constructed, & used",10B,Non-Food Contact Surfaces Construction
+12,equipment/utensil cleaning,FC16,Food contact surfaces; cleaned & sanitized,04A,Manual
+12,equipment/utensil cleaning,FC16,Food contact surfaces; cleaned & sanitized,12A,Food Contact Surfaces Cleaning
+12,equipment/utensil cleaning,FC41,Wiping Cloths; properly used & stored,12D,Wiping Cloths
+12,equipment/utensil cleaning,FC48,"Warewashing facilities: installed, maintained, & used; test strips",04B,Mechanical
+12,equipment/utensil cleaning,FC48,"Warewashing facilities: installed, maintained, & used; test strips",10C,Dishwashing Facilities
+12,equipment/utensil cleaning,FC48,"Warewashing facilities: installed, maintained, & used; test strips",11B,Dishmachine With Accurate Thermometer & Gauge Cock
+12,equipment/utensil cleaning,FC48,"Warewashing facilities: installed, maintained, & used; test strips",11C,Chemical Test Kits Provided Accessible
+12,equipment/utensil cleaning,FC48,"Warewashing facilities: installed, maintained, & used; test strips",12C,Dishwashing Operations
+12,equipment/utensil cleaning,FC49,Non-food contact surfaces clean,04C,In Place
+12,equipment/utensil cleaning,FC49,Non-food contact surfaces clean,12B,Non-Food Contact Surfaces Cleaning
+13,utensils,FC44,"Utensils, equipment & linens: properly stored, dried, & handled",13A,"Equipment Utensils Provided Used, Stored"
+13,utensils,FC44,"Utensils, equipment & linens: properly stored, dried, & handled",15B,Linen Properly Stored
+13,utensils,FC45,Single-use / single-service articles: properly stored & used,13B,Single Service Articles Stored Dispensed Used
+13,utensils,FC45,Single-use / single-service articles: properly stored & used,13C,No Reuse of Single Service Articles
+14,physical facilities,FC54,Garbage & refuse properly disposed; facilities maintained,14B,Garbage and Refuse
+14,physical facilities,FC55,"Physical facilities installed, maintained, & clean",14C,Floors Walls Ceilings
+14,physical facilities,FC55,"Physical facilities installed, maintained, & clean",14F,Locker Rooms
+14,physical facilities,FC55,"Physical facilities installed, maintained, & clean",14G,Premises Maintained
+14,physical facilities,FC55,"Physical facilities installed, maintained, & clean",14H,Separation of Living Laundry
+14,physical facilities,FC56,Adequate ventilation & lighting; designated areas used,14D,Lighting
