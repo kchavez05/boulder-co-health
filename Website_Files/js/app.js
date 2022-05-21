@@ -4,8 +4,8 @@ function init() {
   
     // Use the list of sample names to populate the select options
     d3.json("web_facility_data.json").then((data) => {
-      var facNames = data.names;
-  
+      var facNames = data.names
+
       facNames.forEach((facility) => {
         selector
           .append("option")
@@ -46,9 +46,20 @@ function init() {
       // Use `Object.entries` to add each key and value pair to the panel
       // Hint: Inside the loop, you will need to use d3 to append new
       // tags for each key-value in the metadata.
-      Object.entries(result).forEach(([key, value]) => {
-        PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
-      });
+      // Object.entries(result).forEach(([key, value]) => {
+      //   PANEL.append("h6").text(`${key.toUpperCase()}: ${value.to}`);
+      // });
+
+      // PANEL.append("h6").text("" + result.id);
+      PANEL.append("h3").text(result.facility_name);
+      PANEL.append("h6").text("Facility ID: " +result.facility_id);
+      PANEL.append("h6").text("Google Rating: " +result.rating);
+      PANEL.append("h6").text("Total Google Ratings: " +result.total_ratings)
+      PANEL.append("h6").text("Average Inspection Score: " +result.avg_inspection_score);
+      PANEL.append("h6").text("Average Count of Violations: " +result.avg_violations_count);
   
     });
   }
+
+
+    
