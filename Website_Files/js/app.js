@@ -35,7 +35,7 @@ function init() {
     d3.json("web_facility_data.json").then((data) => {
       var metadata = data.metadata;
       // Filter the data for the object with the desired facility name
-      var resultArray = metadata.filter(facObj => facObj.facility_name == facility);
+      var resultArray = metadata.filter(facObj => facObj.facility_name_plus == facility);
       var result = resultArray[0];
       // Use d3 to select the panel with id of `#fac-metadata`
       var PANEL = d3.select("#fac-metadata");
@@ -50,15 +50,29 @@ function init() {
       //   PANEL.append("h6").text(`${key.toUpperCase()}: ${value.to}`);
       // });
 
-      // PANEL.append("h6").text("" + result.id);
       PANEL.append("h3").text(result.facility_name);
-      PANEL.append("h6").text("Facility ID: " +result.facility_id);
+      PANEL.append("h3").append("em").text(" in " + result.city);
+      PANEL.append("h6").text("Facility ID: ").append("infodisplay").text(result.facility_id);
+      // PANEL.append("small").text(result.facility_id);
       PANEL.append("h6").text("Google Rating: " +result.rating);
       PANEL.append("h6").text("Total Google Ratings: " +result.total_ratings)
       PANEL.append("h6").text("Average Inspection Score: " +result.avg_inspection_score);
       PANEL.append("h6").text("Average Count of Violations: " +result.avg_violations_count);
   
-    });
+  
+    
+    // Use d3 to select the panel with id of `#fac-violation data`
+    var PANEL = d3.select("#fac-violation-data");
+  
+    // Use `.html("") to clear any existing metadata
+    PANEL.html("");
+
+    PANEL.append("h3").text("Recieved Violations");
+    PANEL.append("h6").text("stuff goes here");
+
+
+  });
+
   }
 
 
