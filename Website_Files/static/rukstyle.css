@@ -3,6 +3,10 @@
     color: #308185 !important;
   } */
 
+
+  .title-sec {
+    padding: 40px 0px 0px 0px;
+  }
   .jumbotron {
     padding: 50px;
     background-color: lightgray;
@@ -15,23 +19,28 @@
   }
   .col-md-8, .bodyText {
     text-align: justify;
-    /* padding: 40px 5px 40px 20px; */
   }
   .col-md-6{
     padding:20px;
   }
 
+  .col-md-5{
+    padding:20px;
+  }
+
+    /* Panel Block styling */
+  .display {
+    padding: 20px 20px 50px 20px;
+  }
   .well{
     height:100%;
   }
-
   .facility-header {
     font-size: 50px;
     padding: 20px 0px 20px 0px;
     border-radius: 50px 15px;
     background-color: lightgray;
   }
-
   .col-md-4 {
     padding-top:20px;
   }
@@ -42,33 +51,18 @@
     margin-left: 10%;
   
   }
-
   .panel-body {
     padding: 10px;
     height:100%;
   }
-
    select{
     width: 100% !important;
-  }
+   }
 
-  .display {
-    padding: 0px 20px 0px 20px;
-  }
   .panel-body h3 {
     margin: 0px 0px 0px 0px;
   }
 
-  .tab-zone, .tab-widget, .tabZone-layout-basic{
-    height: 800px;
-    width: 100%;
-  }
-
   infodisplay {
     font-size: 12px;
-  }
-
-  
-  h6 custsubhead{
-    color: #efefef;
   }
