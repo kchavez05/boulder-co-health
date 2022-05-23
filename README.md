@@ -25,10 +25,6 @@ Our group selected the topic of health inspection scores from Boulder Country, C
 6. Create a Dashboard
 7. Build an Interactive Website to Display Findings
 
-Team Rainbow Unicorn Kitty Communication Protocol : Regular Tuesday, Thursday and Sunday meetings. Various other meetings depending on the workload and piece. General notes and notes from each meeting live in a shared Google document, a Trello board and all other communication is done through a group slack channel as well as a project 
-Trello board.
-
-
 ## (1) Data Sources and Resources
 
 #### Boulder County Health Inspection Data 
@@ -115,47 +111,53 @@ Since the data used for this project is static, we chose not to figure out how t
 
 
 ## (4) Deployed Machine Learning Models
-#### Decision Tree 
 
-The Boulder County Health Inspections Scores were obtained. The features selected for the first analysis were the Health Inspection Score, Facility Type and Facility Category. These features were used to train the model in trying to predict the Yelp Rating per facility.
+The process of choosing a Machine Learning (ML) model started with confirming the hypothesis that the Google Rating could be predicted using the Health Inspection Scores. Initial engineering of the datasets required binning the Health Inspection Scores (1 to 5) and the Google Ratings (1 to 5). The initial accuracy scores from three ML models (Logistic Regression, Support Vector Machine and RandomForest) showed a low accuracy level of 59%. In order to increase accuracy, the Google Ratings were binned to create a binary score (High and Low). Based on the distribution of all Google Ratings in the dataset, 4.51 was determined to be the dividing line between High and Low Google Ratings.
 
-The first step in engineering the features for the machine learning model used the filtered dataset to:
-The Boulder County Health Inspections Scores were obtained. The features selected for the first analysis were the Health Inspection Score, Facility Type and Facility Category. These features were used to train the model in trying to predict the Yelp Rating per facility.
 
-The first step in engineering the features for the machine learning model used the filtered dataset to:
+![Distribution](Images/"Dist of Google Ratings")
 
- - Eliminate all location data so as not to overburden the model
- - Average the inspection scores for all routine and regular health inspections by facility
- - This was difficult to eliminate the duplicate rows without losing details (pivot table and merge)
- - Bin the averaged health inspection scores to match the Health Department ratings
- - Create randomized Yelp Ratings to test the model
- - Compare different ML models: Logistic Regression, SVM, Random Forest, AdaBoost. 
- - Random Forest model was used to engineer the models as it is fast, simple and flexible
- - Easy to use during the initial model development process, to see how it performs
- - Provides a good indicator of the importance it assigns to features
- - Limitations include: fast to train, but quite slow to create predictions once they are trained
- - May need to switch to a neural network, for the second phase which has a lot of different feature types
+Providing a binary Google Rating increased the models' accuracy to about 72%. Even applying a gradient boosting tree (AdaBoost) to the mix increased the prediction power very little to 73%. In an attempt to increase accuracy, additional features of violation category and violation counts were added to the model.  
 
- The google scored were broken into two categories, ... and .... based on the distribution of the average google rating below, with 4.45 being the driving the two categories.
+The Chi-Square test is used in feature selection to test the relationship between features and the predicted target which helps determine the best features to build the machine learning model. For machine learning, features that relate strongly to the target prediciton are most desirable. Small Chi-Square values indicate the feature and target are indepedent from each other. High Chi-Square values indicate that the feature and target are dependent and therefore those features are good candidates for model training. In this activity, two different datasets were used for feature selection: violation categories (did a facility ever get a particular type of violation) and violation counts (how often did a facility receive a particular violation).
 
-![Distribution Diagram](Images/google_dist.png)
+The results of feature selection showed that the Violation Categories for the feature "Type of Facility" was more closely predictive (higher chi-square values) to the target (Google Rating). The highest facilities categories were "Restaurant with >200 seats" and small facilities "Limited Food Service, Convenience." Examples of Restaurants with >200 seats are corporate facilities such as Red Robin and Texas Roadhouse as well as local favorites The Roost and Beau Jo's. Example of Limited Food Service, Convenience range from local coffee shops to Starbucks.
+
+
+![Distribution](Images/"Feature Selection Violation Category")
+
+Violation Counts revealed the highest dependency on "Water/Sewage" and "Toilets/Handwashing" violations. Facility type had some influence on the features selected from this activity. These results correlate well with the restaurant-industry adage, for the best health inspection scores, Start in the Restroom!
+
+
+![Distribution](Images/"Feature Selection Violation Counts")
+
+The top 7 features were used to compare Machine Learning Models.   
+
+Five machine learning models were compared for accuracy using seven selected features. The target is Google Rating. The features include HealthScore, three health violation categories and three facility types and one facility category.
+
+Results from the ML Comparison show equal accuracy between all of the machine learning models, providing about 72% accuracy in predicting the Google Rating. AdaBoost was added to the ML models when the regressions techniques continued to provide lacluster results. The goal of AdaBoost is to combine many weak classifiers into a single strong classifier. In this application, AdaBoost was used with one level of decision trees; increasing decision levels did not provide better accuracy. Additionally, Neural Networks also did not prove more accurate than the regressions models. Logistic Regression and AdaBoost provided similiar accuracy scores of 73%.
+
+
+![Distribution](Images/""ML Comparison Table" and "ML Comparisons")
+
+For simplicity sake and because it provided similiar results as more complex models, Logistic Regression is selected as the machine learning model for this project. Using this ML model, Google Ratings can be predicted from the Health Scores with 73% accuracy.
+
+
+
 
 ## Presentation
+Below are the google slide presentation, which is embeded in the website. The websote captures the narrative to tell the story of the slides but in a more hands on way.
+
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-1.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-2.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-3.JPG)
-![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-4.JPG)
+
 
 ## (7) Dat Interactive Website
  Website Build out :
 
 
  Interactive Pieces:
-
-#### Ratings Dashboard
-Well, we do care about ratings, so howabout a useful rating oriented dashboard to narrow down the search for the next meal. A the size of the boxes represent the total number of ratings and the color scales along with the average google rating. Hovering over shows you the inspection score as well as the price designation on google.
-
-![Dashboard heatmap](Images/interactive_ratings_by_city.png)
 
 
 
