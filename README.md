@@ -115,7 +115,7 @@ Since the data used for this project is static, we chose not to figure out how t
 The process of choosing a Machine Learning (ML) model started with confirming the hypothesis that the Google Rating could be predicted using the Health Inspection Scores. Initial engineering of the datasets required binning the Health Inspection Scores (1 to 5) and the Google Ratings (1 to 5). The initial accuracy scores from three ML models (Logistic Regression, Support Vector Machine and RandomForest) showed a low accuracy level of 59%. In order to increase accuracy, the Google Ratings were binned to create a binary score (High and Low). Based on the distribution of all Google Ratings in the dataset, 4.51 was determined to be the dividing line between High and Low Google Ratings.
 
 
-![Distribution](Images/"Dist of Google Ratings")
+![Distribution](Images/"Dist of Google Ratings.png")
 
 Providing a binary Google Rating increased the models' accuracy to about 72%. Even applying a gradient boosting tree (AdaBoost) to the mix increased the prediction power very little to 73%. In an attempt to increase accuracy, additional features of violation category and violation counts were added to the model.  
 
@@ -124,12 +124,12 @@ The Chi-Square test is used in feature selection to test the relationship betwee
 The results of feature selection showed that the Violation Categories for the feature "Type of Facility" was more closely predictive (higher chi-square values) to the target (Google Rating). The highest facilities categories were "Restaurant with >200 seats" and small facilities "Limited Food Service, Convenience." Examples of Restaurants with >200 seats are corporate facilities such as Red Robin and Texas Roadhouse as well as local favorites The Roost and Beau Jo's. Example of Limited Food Service, Convenience range from local coffee shops to Starbucks.
 
 
-![Distribution](Images/"Feature Selection Violation Category")
+![Distribution](Images/"Feature Selection Violation Category.png")
 
 Violation Counts revealed the highest dependency on "Water/Sewage" and "Toilets/Handwashing" violations. Facility type had some influence on the features selected from this activity. These results correlate well with the restaurant-industry adage, for the best health inspection scores, Start in the Restroom!
 
 
-![Distribution](Images/"Feature Selection Violation Counts")
+![Distribution](Images/"Feature Selection Violation Counts.png")
 
 The top 7 features were used to compare Machine Learning Models.   
 
@@ -138,7 +138,7 @@ Five machine learning models were compared for accuracy using seven selected fea
 Results from the ML Comparison show equal accuracy between all of the machine learning models, providing about 72% accuracy in predicting the Google Rating. AdaBoost was added to the ML models when the regressions techniques continued to provide lacluster results. The goal of AdaBoost is to combine many weak classifiers into a single strong classifier. In this application, AdaBoost was used with one level of decision trees; increasing decision levels did not provide better accuracy. Additionally, Neural Networks also did not prove more accurate than the regressions models. Logistic Regression and AdaBoost provided similiar accuracy scores of 73%.
 
 
-![Distribution](Images/""ML Comparison Table" and "ML Comparisons")
+![Distribution](Images/""ML Comparison Table" and "ML Comparisons.png")
 
 For simplicity sake and because it provided similiar results as more complex models, Logistic Regression is selected as the machine learning model for this project. Using this ML model, Google Ratings can be predicted from the Health Scores with 73% accuracy.
 
