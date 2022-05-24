@@ -1,0 +1,76 @@
+
+/* Header Sections */
+  .jumbotron {
+    padding: 4%;
+    background-color: lightgray;
+    border-radius: 15px 50px;
+
+  }
+  .jumbotron h1 {
+      font-family: 'Times New Roman', Times, serif !important;
+      font-size: 64px;
+  }
+  .titlesec {
+    padding: 30px 10px 0px 10px;
+  }
+
+  /* Verbiage Sections */
+  /* .bodyText {
+    text-align: justify;
+    padding-left: 20px !important;
+  } */
+  .col-md-6, .bodyText{
+    text-align: justify;
+    padding: 20px 20px 20px 30px
+  }
+  .titleimg {
+    width: 100%;
+  }
+
+    /* Panel Block styling */
+  .display {
+    padding: 20px 20px 50px 20px;
+  }
+  .well{
+    height:100%;
+  }
+  .facility-header {
+    font-size: 50px;
+    padding: 20px 0px 20px 0px;
+    border-radius: 50px 15px;
+    background-color: lightgray;
+  }
+  .col-md-4 {
+    padding-top:20px;
+  }
+  .col-md-4 h6 {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 10%;
+  
+  }
+  .panel-body {
+    padding: 10px;
+    height:100%;
+  }
+   select {
+    width: 100% !important;
+   }
+
+  .panel-body h3 {
+    margin: 0px 0px 0px 0px;
+  }
+
+  infodisplay {
+    font-size: 12px;
+  }
+
+  .col-md-5{
+    padding:20px;
+  }
+
+  /* Tableau Styling */
+  .tableauPlaceholder {
+    width: 100%;
+  }
