@@ -300,6 +300,7 @@ select distinct
 from inspections
 group by facility_id;
 
+--create more readable crosswalk from old to new violations
 drop table violations_crosswalk_readable;
 select distinct
 	cw.violation_category,
@@ -317,8 +318,16 @@ from violations_crosswalk cw
 order by 1,3,5
 ;
 
-
-
+--create list of all violation titles per facility
+select distinct
+	v.facility_id,
+	v.inspection_date,
+	vn.vcat_title violation_category,
+	lower(v.violation)
+from violations v
+	join violations_norm vn
+		on v.violation_code = vn.violation_code
+order by 1,2
 
 
 
