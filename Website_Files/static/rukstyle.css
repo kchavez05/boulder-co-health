@@ -1,14 +1,7 @@
-  /* .cust{
-    font-weight: bold !important;
-    color: #308185 !important;
-  } */
 
-
-  .title-sec {
-    padding: 40px 0px 0px 0px;
-  }
+/* Header Sections */
   .jumbotron {
-    padding: 50px;
+    padding: 4%;
     background-color: lightgray;
     border-radius: 15px 50px;
 
@@ -17,15 +10,21 @@
       font-family: 'Times New Roman', Times, serif !important;
       font-size: 64px;
   }
-  .col-md-8, .bodyText {
-    text-align: justify;
-  }
-  .col-md-6{
-    padding:20px;
+  .titlesec {
+    padding: 30px 10px 0px 10px;
   }
 
-  .col-md-5{
-    padding:20px;
+  /* Verbiage Sections */
+  /* .bodyText {
+    text-align: justify;
+    padding-left: 20px !important;
+  } */
+  .col-md-6, .bodyText{
+    text-align: justify;
+    padding: 20px 20px 20px 30px
+  }
+  .titleimg {
+    width: 100%;
   }
 
     /* Panel Block styling */
@@ -55,7 +54,7 @@
     padding: 10px;
     height:100%;
   }
-   select{
+   select {
     width: 100% !important;
    }
 
@@ -65,4 +64,13 @@
 
   infodisplay {
     font-size: 12px;
+  }
+
+  .col-md-5{
+    padding:20px;
+  }
+
+  /* Tableau Styling */
+  .tableauPlaceholder {
+    width: 100%;
   }
