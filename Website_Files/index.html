@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boulder County Restaurant Health Inspection Scores vs. Google Ratings</title>
     <!-- Fonts -->
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <!-- Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="static/rukstyle.css">
@@ -34,12 +36,13 @@
       </div>
     </div>
   </nav>
-<div class="container-fluid titlesec">
-  <center><div class="jumbotron"><h1 class="tite_style">Boulder County Health Inspection Scores</h1>
-      <h2>VS. Google Ratings</h2></div>
+  <div class="container-fluid">
+    <div class="rukspace">
+    <center><div class="jumbotron"><h1 class="display-2">Boulder County Health Inspection Scores</h1>
+      <h2>vs. Google Business Ratings</h2></div>
 
       <!-- Project Intro -->
-        <div class="row">
+        <div class="row rukspace">
           <div class="col-md-6 bodyText">
             <p class="lead">
               Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
@@ -50,22 +53,29 @@
           </p>
           </div>
           <div class="col-md-6">
-            <center><img src="http://via.placeholder.com/850x250" class="titleimg" alt=""></center>
-          </div>
+            <img src="images/bldr_v_goog.png" class="img-fluid" alt="...">
+            <!-- <div class = "titleimg">
+              
+          </div> -->
         </div>
-
-      
+      </div>
+    </div>
       <!-- Explore the Dataset -->
-      <div class="container-fluid display">
-        <div class="facility-header">Explore the Data</div>
+    
+      <div class="rukbgcolor1">
+      <div class="container-fluid">
+        <center><div class="rukspace">
+        <div class="facility-header"><h2>Explore the Data</h2></div>
         <!-- <div class="callout">See how your favorite Boulder County Restaurant performs</div> -->
         <div class="row">
           <div class = "col-md-4">
-            <div class="well">
               
               <h3>Select a Restaurant</h3>
               <select class="form-select" aria-label="Default select example" id="selDataset" onchange="optionChanged(this.value)"></select>
-            </div></div>
+              <blockquote class="blockquote" style="padding-top: 20px;">
+                <p><i>How does your favorite restaurant perform?</i></p>
+              </blockquote>
+            </div>
           <div class = "col-md-4">
             <div class="panel panel-primary">
               <div id="fac-metadata" class="panel-body" onchange="buildMetadata(this.value)"></div>
@@ -74,13 +84,32 @@
             <div class="panel panel-primary">
               <div id="fac-violation-data" class="panel-body" onchange="buildMetadata(this.value)"></div>
             </div></div>
-        </div></div>
+        </div></div></center></div></div>
       <!-- Tableau Embeds --> 
-      <div class="container-fluid display">
-        <div class="facility-header">Interact</div>    
+      <div class="container-fluid">
+        <center><div class="rukspace">
+        <div class="facility-header"><h2>Interact</h2></div>
         <div class="row">
-        <div class="col-md-7">
-          <div class='tableauPlaceholder' id='viz1653010592972' style='position: relative'>
+        <div class="col-md-4">
+          <h3>A Title</h3>
+          <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h3>Another!</h3>
+          <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h3>A Third?</h3>
+          <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
+          </p>
+        </div>
+        </div>
+        <div class="rukbgcolor1">
+        <div class="row">
+        <div class="col-md-12">
+          <center><div class='tableauPlaceholder' id='viz1653010592972' style='position: center;'>
             <noscript><a href='#'>
               <img alt='Story 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FK&#47;FK4TPFM5D&#47;1_rss.png' 
               style='border: none' /></a></noscript>
@@ -94,20 +123,10 @@
                 <param name='language' value='en-US' /></object>
               </div>                
                 <script type='text/javascript'>                    var divElement = document.getElementById('viz1653010592972');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height='1000px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-            </div>
-        <div class="col-md-5 bodyText">
-          <p class="lead">
-            Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
-          </p>
-          <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
-          </p>
-          <p>Trysail Sail ho Corsair red ensign hulk smartly boom jib rum gangway. Case shot Shiver me timbers gangplank crack Jennys tea cup ballast Blimey lee snow crow's nest rutters. Fluke jib scourge of the seven seas boatswain schooner gaff booty Jack Tar transom spirits.
-        </p>
-        </div>
-
+            </center></center></div>
           </div>
-  </div>
-  </div>
+        </div></div>
+
 
 
   <!-- Custom JS -->
