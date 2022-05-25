@@ -66,7 +66,7 @@ Our group selected the topic of health inspection scores from Boulder Country, C
 
     3. After inspecting datatypes and changing Inspection Date to a datetime datatype, the data was exported to a new CSV to be loaded into the database.
 
-Snapshot of the finalized dataset by County: 
+Snapshot of the finalized dataset by city: 
 Average Rating
 Total Ratings
 Average Price Level
@@ -79,6 +79,8 @@ Total Number of Violations
 
 Since the data used for this project is static, we chose not to figure out how to host the database in a location accessible to all team members. Instead, the database was used to further assemble and rearrange the data. Targeted datasets to be used for machine learning were then created by selecting the necessary columns and exporting the data as CSVs.
 
+### Assembly
+
 1. The exported facilities and ratings data was loaded into Postgres, as-is aside from minor changes to column names.
 
 2. Once loaded, the Price Level and Status columns were moved from the Ratings to the Facilities table for more coherent data grouping
@@ -89,26 +91,43 @@ Since the data used for this project is static, we chose not to figure out how t
 
 5. An Inspections table was created to house only the facility ID, inspection date, and inspection score from each individual inspection. An inspection ID was generated as an identity column to help later in identifying violations observed during the same inspection.
 
-6. A dataset containing facility ID, inspection date, inspection score, rating, and total ratings was assembled and exported for use in the inital round of machine learning.
-
-7. A violations table was created to document the violations documented in each inspection. Since the source data contained several violation statuses that did not indicate that a violation had actually been observed, as well as sume null statuses, this was done in several steps:
+6. A violations table was created to document the violations documented in each inspection. Since the source data contained several violation statuses that did not indicate that a violation had actually been observed, as well as sume null statuses, this was done in several steps:
 
     A. The table was created using rows where a facility had an "Out" status (meaning it was out of compliance)
     
     B. Data was extrapolated for facilities with a non-zero inspection score (indicating some violations had been observed) but no violations with an "Out" status:
 
-        1. If the sum of violation points associated with the null rows from an inspection 
-        matched the total inspection score, the violations were added to the Violations table 
-        with an "Out" status, as they must have been the source of the inspection score.
+        1. If the sum of violation points associated with the null rows from an inspection matched the total inspection score, the violations were added to the Violations table with an "Out" status, as they must have been the source of the inspection score.
 
-        2. If the sum of violation points associated with the null rows from an inspection 
-        did not match the total inspection score, it is most likely that these violations 
-        were observed but not awarded their full point value. Since this could not be determined 
-        for certain, they were added to the Violations table with a status of "Assumed Out."
+        2. If the sum of violation points associated with the null rows from an inspection did not match the total inspection score, it is most likely that these violations were observed but not awarded their full point value. Since this could not be determined for certain, they were added to the Violations table with a status of "Assumed Out."
 
-![Database Diagram](Images/erd-2.png)
+        Both "Out" and "Assumed Out" were used for machine learning.
 
+7. In the process of creating the violations table, we realized that the violations came from two separate lists: one specific to Boulder County that was used for inspections prior to 2019, and a national version that was adopted in 2019. Since these violations had different codes and partial but incomplete conceptual overlap, a crosswalk was created to translate from each pre-2019 violation to the closest later equivalent. Since the "new" violation codes were intended for use if we did analysis at the level of individual violations, this was created as a many-to-one relationship from old to new violations. Since the pre-2019 system was subdivided into categories that might be more productive for machine learning tha the individual violations, both old and new violations were into the old categories, though a few had to be merged the new violations did not fit neatly into them. These categories were included in the crosswalk, which was created as a CSV and loaded into the database.
 
+8. Using the crosswalk, a violations_norm table was created to translate all old violations to their new equivalent, including their violation category.
+
+![Database Diagram](Images/erd_w_normalization.png)
+
+### Export
+
+1. For machine learning
+
+    1. A dataset containing facility ID, inspection date, inspection score, rating, total ratings, and was assembled and exported for use in the inital round of machine learning.
+
+    2. To facilitate machine learning using violations, a series of pivot tables were created and exported:
+        * A table containing each facility id and a list of all violations, with a binary indicator of whether the facility had ever received each violation during one of its inspections
+        * A table containg each facility id and a list of all violations, with a count of how many times the facility had received each violation across all inspections performed there
+        * A table containing each facility id and a list of all violations categories, with a binary indicator of whether the facility had ever received a violation in each category during one of its inspections
+        * A table containg each facility id and a list of all violations, with a count of how many times the facility had received violations in each category across all inspections performed there
+
+    ![Pivot Table Preview](Images/pivot_table_previews.png)
+    
+2. For visualization
+
+    1. A dataset was created for visualizations in tableau, including total ratings, average inspection score, average number of violations, and total number of inspections in addition to all facility data.
+    2. A human-readable violations crosswalk was created for use in interpreting violations data, including the code and title for violations under both the old and new systems, as well as the violation category code and title
+    3. A list of all violation titles at each facility was created for lookup via the website
 
 ## (4) Deployed Machine Learning Models
 
