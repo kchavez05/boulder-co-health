@@ -95,11 +95,12 @@ Since the data used for this project is static, we chose not to figure out how t
     A. The table was created using rows where a facility had an "Out" status (meaning it was out of compliance)
     
     B. Data was extrapolated for facilities with a non-zero inspection score (indicating some violations had been observed) but no violations with an "Out" status:
-        * If the sum of violation points associated with the null rows from an inspection matched the total inspection score, the violations were added to the Violations table with an "Out" status, as they must have been the source of the inspection score.
+    
+    * If the sum of violation points associated with the null rows from an inspection matched the total inspection score, the violations were added to the Violations table with an "Out" status, as they must have been the source of the inspection score.
 
-        * If the sum of violation points associated with the null rows from an inspection did not match the total inspection score, it is most likely that these violations were observed but not awarded their full point value. Since this could not be determined for certain, they were added to the Violations table with a status of "Assumed Out."
+    * If the sum of violation points associated with the null rows from an inspection did not match the total inspection score, it is most likely that these violations were observed but not awarded their full point value. Since this could not be determined for certain, they were added to the Violations table with a status of "Assumed Out."
 
-        Both "Out" and "Assumed Out" were used for machine learning.
+    Both "Out" and "Assumed Out" were used for machine learning.
 
 7. In the process of creating the violations table, we realized that the violations came from two separate lists: one specific to Boulder County that was used for inspections prior to 2019, and a national version that was adopted in 2019. Since these violations had different codes and partial but incomplete conceptual overlap, a crosswalk was created to translate from each pre-2019 violation to the closest later equivalent. Since the "new" violation codes were intended for use if we did analysis at the level of individual violations, this was created as a many-to-one relationship from old to new violations. Since the pre-2019 system was subdivided into categories that might be more productive for machine learning tha the individual violations, both old and new violations were into the old categories, though a few had to be merged the new violations did not fit neatly into them. These categories were included in the crosswalk, which was created as a CSV and loaded into the database.
 
@@ -157,9 +158,9 @@ Five machine learning models were compared for accuracy using seven selected fea
 Results from the ML Comparison show equal accuracy between all of the machine learning models, providing about 72% accuracy in predicting the Google Rating. AdaBoost was added to the ML models when the regressions techniques continued to provide lacluster results. The goal of AdaBoost is to combine many weak classifiers into a single strong classifier. In this application, AdaBoost was used with one level of decision trees; increasing decision levels did not provide better accuracy. Additionally, Neural Networks also did not prove more accurate than the regressions models. Logistic Regression and AdaBoost provided similiar accuracy scores of 73%.
 
 
-![ML Comparisons Table](Images/ML_Comparisons_Table.png) 
+![ML Comparisons Table](Images/ML_Comparisons_Table.PNG) 
 
-![ML Comaprisons](Images/ML_Comparisons.png)
+![ML Comaprisons](Images/ML_Comparisons.PNG)
 
 For simplicity's sake and because it provided comparable results to more complex models, Logistic Regression is selected as the machine learning model for this project. Using this ML model, Google Ratings can be predicted from the Health Scores with 73% accuracy.
 
