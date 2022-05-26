@@ -51,13 +51,13 @@ function init() {
       // });
 
       PANEL.append("h3").text(result.facility_name);
-      PANEL.append("h3").append("em").text(" in " + result.city);
+      PANEL.append("h4").append("em").text(" in " + result.city);
       PANEL.append("h6").text("Facility ID: ").append("infodisplay").text(result.facility_id);
       // PANEL.append("small").text(result.facility_id);
-      PANEL.append("h6").text("Google Rating: " +result.rating);
-      PANEL.append("h6").text("Total Google Ratings: " +result.total_ratings)
-      PANEL.append("h6").text("Average Inspection Score: " +result.avg_inspection_score);
-      PANEL.append("h6").text("Average Count of Violations: " +result.avg_violations_count);
+      PANEL.append("h6").text("Google Rating: ").append("infodisplay").text(result.rating);
+      PANEL.append("h6").text("Total Google Ratings: ").append("infodisplay").text(result.total_ratings)
+      PANEL.append("h6").text("Average Inspection Score: ").append("infodisplay").text(result.avg_inspection_score);
+      PANEL.append("h6").text("Average Count of Violations: ").append("infodisplay").text(result.avg_violations_count);
   
   
     
