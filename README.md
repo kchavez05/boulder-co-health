@@ -1,10 +1,8 @@
 # Boulder County Health Scores and Reviews
 
-![Team Rainbow Unicorn Kitty](Images/yeah.jpg)
-
 ## Background
 
-Members of the group have worked in the restaurant industry and have experience with the inspection process. We thought it would be interesting to build a model to test the relationship between a restaurant's health inspection score and its customer rating on Google. 
+Members of the group have worked in the restaurant industry and have experience with the inspection process. There are general rules of thumb passed down from manager to manager to pass the inspection process. We thought it would be interesting to build a data driven model to test the relationship between a restaurant's health inspection score and its customer rating on Google and test the correlations of violation categories. 
 
 ## Objective
 
@@ -29,18 +27,20 @@ Our group selected the topic of health inspection scores from Boulder Country, C
 
 #### Boulder County Health Inspection Data 
 
-    https://www.bouldercounty.org/families/food/restaurant-inspection-data/
-    - This dataset includes public state health department data for restaurants in Boulder county
-    -  While data through the present day is available, we limited our scope to inspections before 2020, to eliminate COVID effects.
-    - The Boulder Inspection data includes a Facility ID as a unique identifier, which we also used throughout the project as each restaurant's Unique ID.
+https://www.bouldercounty.org/families/food/restaurant-inspection-data/
+- This dataset includes public state health department data for restaurants in Boulder county
+-  While data through the present day is available, we limited our scope to inspections before 2020,
+     to eliminate COVID effects.
+- The Boulder Inspection data includes a Facility ID as a unique identifier, which we also 
+    used throughout the project as each restaurant's Unique ID.
 
 #### Rating and Location Data
-    Latitude, longitude, and google restaurant rating provided through the Google API 
+- Latitude, longitude, and google restaurant rating provided through the Google API 
 
 #### Tools
-    - Python, Pandas, SKLearn, Tensorflow
-    - SQL, Postgres, QuickDBD, Github
-    - Google, Tableau, Google Docs and Slides
+- Python, Pandas, SKLearn, Tensorflow
+- SQL, Postgres, QuickDBD, Github
+- Google, Tableau, Trello, Google Docs and Slides
 
 
 ## (2) Scrubbing the data
@@ -95,10 +95,9 @@ Since the data used for this project is static, we chose not to figure out how t
     A. The table was created using rows where a facility had an "Out" status (meaning it was out of compliance)
     
     B. Data was extrapolated for facilities with a non-zero inspection score (indicating some violations had been observed) but no violations with an "Out" status:
+        * If the sum of violation points associated with the null rows from an inspection matched the total inspection score, the violations were added to the Violations table with an "Out" status, as they must have been the source of the inspection score.
 
-        1. If the sum of violation points associated with the null rows from an inspection matched the total inspection score, the violations were added to the Violations table with an "Out" status, as they must have been the source of the inspection score.
-
-        2. If the sum of violation points associated with the null rows from an inspection did not match the total inspection score, it is most likely that these violations were observed but not awarded their full point value. Since this could not be determined for certain, they were added to the Violations table with a status of "Assumed Out."
+        * If the sum of violation points associated with the null rows from an inspection did not match the total inspection score, it is most likely that these violations were observed but not awarded their full point value. Since this could not be determined for certain, they were added to the Violations table with a status of "Assumed Out."
 
         Both "Out" and "Assumed Out" were used for machine learning.
 
@@ -127,11 +126,11 @@ Since the data used for this project is static, we chose not to figure out how t
     
 2. For visualization
 
-    1. A dataset was created for visualizations in tableau, including total ratings, average inspection score, average number of violations, and total number of inspections in addition to all facility data.
+    A. A dataset was created for visualizations in tableau, including total ratings, average inspection score, average number of violations, and total number of inspections in addition to all facility data.
 
-    2. A human-readable violations crosswalk was created for use in interpreting violations data, including the code and title for violations under both the old and new systems, as well as the violation category code and title
+    B. A human-readable violations crosswalk was created for use in interpreting violations data, including the code and title for violations under both the old and new systems, as well as the violation category code and title
 
-    3. A list of all violation titles at each facility was created for lookup via the website
+    C. A list of all violation titles at each facility was created for lookup via the website
 
 ## (4) Deployed Machine Learning Models
 
@@ -144,12 +143,12 @@ The Chi-Square test is used in feature selection to test the relationship betwee
 The results of feature selection showed that the Violation Categories for the feature "Type of Facility" was more closely predictive (higher chi-square values) to the target (Google Rating). The highest facilities categories were "Restaurant with >200 seats" and small facilities "Limited Food Service, Convenience." Examples of "Restaurant with >200 seats" are corporate facilities such as Red Robin and Texas Roadhouse, as well as local favorites The Roost and Beau Jo's. Examples of "Limited Food Service, Convenience" range from local coffee shops to Starbucks.
 
 
-![Feature Selection](Images/Feature_Selection_Violation_Category.png)
+![Feature Selection](Images/Feature_Selection_Violation_Category.PNG)
 
 Violation Counts revealed the highest dependency on "Water/Sewage" and "Toilets/Handwashing" violations. Facility type had some influence on the features selected from this activity. These results correlate well with the restaurant-industry adage: for the best health inspection scores, start in the Restroom!
 
 
-![Feature Count](Images/Feature_Selection_Violation_Counts.png)
+![Feature Count](Images/Feature_Selection_Violation_Counts.PNG)
 
 The top 7 features were used to compare Machine Learning Models.   
 
@@ -158,30 +157,38 @@ Five machine learning models were compared for accuracy using seven selected fea
 Results from the ML Comparison show equal accuracy between all of the machine learning models, providing about 72% accuracy in predicting the Google Rating. AdaBoost was added to the ML models when the regressions techniques continued to provide lacluster results. The goal of AdaBoost is to combine many weak classifiers into a single strong classifier. In this application, AdaBoost was used with one level of decision trees; increasing decision levels did not provide better accuracy. Additionally, Neural Networks also did not prove more accurate than the regressions models. Logistic Regression and AdaBoost provided similiar accuracy scores of 73%.
 
 
-![Distribution](Images/ML_Comparisons_TAble.png) 
-![Distribution](Images/ML_Comparisons.png)
+![ML Comparisons Table](Images/ML_Comparisons_Table.png) 
+
+![ML Comaprisons](Images/ML_Comparisons.png)
 
 For simplicity's sake and because it provided comparable results to more complex models, Logistic Regression is selected as the machine learning model for this project. Using this ML model, Google Ratings can be predicted from the Health Scores with 73% accuracy.
 
 
 ## Presentation
-Below is the Google slide presentation, which is embeded in the website. The website conveys the same narrative as the slides, but in a more hands-on way.
+Below is the Google slide presentation, which is embeded in the website. Our actual website will serve the purpose of this presentation by narrating the story, hand on of our analysis.
 
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-1.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-2.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-3.JPG)
 
 
-## (7) Dat Interactive Website
- Website Build out :
+## (7) Interactive Website Build
+#### Website Build out :
 
 
- Interactive Pieces:
+#### Interactive Pieces:
+1. Built into the landing page, there is a quick reference drop down to check all of the data points for a specific restuatant.
 
+2. Scrolling down to the bottom is the interactive tableau library which give a filler landscape on the relationships between health inspection score and google rating. Below are a few selected dashbaord images. 
 
+![TOP 10](Images/top_10.png)
 
+![BOTTOM 10](Images/bottom_10.png)
+
+![Heatmap](Images/interactive_ratings_by_city.png)
 
 ## Summary
+
 Overall, the machine learning model can predict whether a facility will receive a good or bad Google rating with ~70% accuracy. However, reversing the input and output does not yield a model that can make predictions with any level of accuracy. This means that the model cannot predict the health inspection score by using the Google rating as an input.
 
 A second analysis dives into if there are any violation categories in particular which drive a stronger correlation with a lower Google rating. To get an idea of the number of times the violation was issued by category compared to the sum of the inspection score points as a result. Not all violations are treated equally in terms of final inspection score.
@@ -190,4 +197,13 @@ A second analysis dives into if there are any violation categories in particular
 
 ## Results
 
-## Recomendations?
+The machine learning model can succesfully make a binary prediction in on direction (input = Inspection score) but not the other way around.
+
+The two inspection categories of toilets, handwashing and personnel drive the strongest correlation in effecting the google rating.
+
+
+## Recomendations
+
+Our first recomendation to restuarants are to prioritize clean bathrooms, as that specifc violation category has the strongest correlation to a negative google rating.
+
+The second reccomendation is to expand. Expanding the data further out to new jurisdictions, so the interactive website can be used across Colorado to find a clean restaurant and guage where a restaurant will fit in the landscape of this analysis. One caveat is that not all of the counties hold the same data integrity for health inspections as Boulder country so due diligence is required to normalize and clean all datasets to combine into one larger one.
