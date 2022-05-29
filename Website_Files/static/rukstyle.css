@@ -96,12 +96,25 @@
 
   infodisplay {
     font-weight: normal !important;
-    text-align: right !important;
   }
 
   .col-md-5{
     padding:20px;
   }
+
+.violations{
+  height:250px;
+  overflow-y:scroll;
+  text-align: left;
+}
+  violationsdis h6 {
+    text-align: left !important;
+  }
+
+  violationsdis::after{
+    content: "\a";
+    white-space: pre;
+}
 
   /* Tableau Styling */
   .tableauPlaceholder {
