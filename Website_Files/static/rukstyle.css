@@ -40,17 +40,28 @@
     margin-bottom: 5px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
+.facility-header h2 {
+  font-family: 'Carter One', cursive;
+  padding: 20px 0px 20px 0px;
+  border-radius: 50px 15px;
+  background-color: rgba(17, 25, 116, 0.3);
+  margin-bottom: 1%;
+}
   .notext{
     padding: 20px 0px 20px 0px;
     border-radius: 15px 50px;
     height: 7px;
     background-color: rgba(17, 25, 116, 0.3);
+    margin-bottom: 1%;
   }
 
   /* Verbiage Sections */
   .bodyText{
     text-align: justify;
     font-family: 'Open Sans', sans-serif;
+  }
+  b {
+    font-weight: 600;
   }
   .titleimg {
     width: 100%;
@@ -65,15 +76,9 @@
   .display {
     padding: 20px 20px 50px 20px;
   }
-  .facility-header h2 {
-    font-family: 'Carter One', cursive;
-    padding: 20px 0px 20px 0px;
-    border-radius: 50px 15px;
-    background-color: rgba(17, 25, 116, 0.3);
-  }
-  .col-md-4 {
+  /* .col-md-4 {
     padding-top:20px;
-  }
+  } */
   .col-md-4 h6 {
     font-weight: bold;
     text-align: left;
