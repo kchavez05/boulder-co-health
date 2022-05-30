@@ -61,7 +61,7 @@ function buildViolations(facility) {
     var PANEL = d3.select("#fac-violation-data");
     // Use `.html("") to clear any existing metadata
     PANEL.html("");
-    // function to split the comma-sep values of the violations from their place in the Json 
+    // function to split the underscore-sep values of the violations from their place in the Json 
     // and populate them on different lines for easy reading
     let availableData = result.violations;
     replaceCommaLine(availableData);
