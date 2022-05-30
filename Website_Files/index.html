@@ -33,7 +33,6 @@
     <div class="container-fluid">
       <!-- Header Data -->
       <div class="rukspace">
-
         <center><div class="jumbotron"><h1 class="display-2">Boulder County Health Inspection Scores</h1>
         <h2>vs. Google Business Ratings</h2></div>
           <!-- Project Intro -->
@@ -60,44 +59,41 @@
             <div class="facility-header"><h2 class="display-5">Explore the Data</h2></div>
             <!-- <div class="callout">See how your favorite Boulder County Restaurant performs</div> -->
             <div class="row rukspace">
-              <div class = "col-md-8 bodyText">
+              <div class = "col-md-12 bodyText">
                 <!-- Explore Intro -->
-                <p class="lead"><b>Remember</b>, restaurants want <i>low</i> health inspection scores. Therefore, for each violation a restaurant receives, points are added to its score for that inspection.
+                <center><p class="lead"><b>Remember</b>, restaurants want <i>low</i> health inspection scores. Therefore, for each violation a restaurant receives, points are added to its score for that inspection.
                 </p><p>Please see the table for a simple explanation of scores and their meanings.</p> 
                 <p><small>For further reading on this topic and to explore the publicly-accessible Boulder County dataset, <a href="https://www.bouldercounty.org/records/licenses/restaurant-inspections-and-violations/" target="_blank">click here.</a></small></p>
+                </center>
               </div>
-              <!-- Inspection Score Table -->
-              <div class = "col-md-4">
-                <table class="table">
+              <!-- Inspection Score Table UNSURED -->
+              <!-- <div class = "col-md-4">
+                <table class="table" style="margin-bottom: 0 !important;">
                   <thead>
                     <tr>
-                      <th colspan="2">Inspection Score Ratings Scale</th>
+                      <th colspan="4"><center>Inspection Score Ratings Scale</center></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>Excellent</td>
                       <td>0-19</td>
+                      <td>Fair</td>
+                      <td>40-69</td>
                     </tr>
                     <tr>
                       <td>Good</td>
                       <td>20-39</td>
-                    </tr>
-                    <tr>
-                      <td>Fair</td>
-                      <td>40-69</td>
+                      <td>Unacceptable</td>
+                      <td>>100</td>
                     </tr>
                     <tr>
                       <td>Marginal</td>
                       <td>70-99</td>
                     </tr>
-                    <tr>
-                      <td>Unacceptable</td>
-                      <td>>100</td>
-                    </tr>
                   </tbody>
                 </table>
-              </div>
+              </div> -->
             </div>
             <div class="facility-header notext"></div>
             <!-- Javascript app -->
@@ -133,12 +129,12 @@
             <div class="facility-header"><h2 class="display-5">Interact</h2></div>
             <div class="row">
               <div class="col-md-4">
-                <h3>A Title</h3>
+                <h3>Understanding Google Inspection Scores</h3>
                 <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
                 </p>
               </div>
               <div class="col-md-4">
-                <h3>Another!</h3>
+                <h3>Google Rating Groups</h3>
                 <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
                 </p>
               </div>
@@ -150,7 +146,31 @@
               </div>
               <div class="rukbgcolor1">
                 <div class="row">
-                  <div class="col-md-12"><div class='tableauPlaceholder' id='viz1653615117240' style='position: relative'><noscript><a href='#'><img alt='Score Exploration ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W2M844HSK&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;W2M844HSK' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W2M844HSK&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1653615117240');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1016px';vizElement.style.height='991px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script></div>
+                  <div class="col-md-12">
+                    <div class='tableauPlaceholder' id='viz1653615117240' style='position: relative'>
+                      <noscript>
+                        <a href='#'>
+                          <img alt='Score Exploration ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W2M844HSK&#47;1_rss.png' style='border: none' /></a>
+                      </noscript>
+                      <object class='tableauViz'  style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                        <param name='embed_code_version' value='3' /> 
+                        <param name='path' value='shared&#47;W2M844HSK' /> 
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W2M844HSK&#47;1.png' /> 
+                        <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' /><param name='display_count' value='yes' />
+                        <param name='language' value='en-US' /></object></div>                
+                        <script type='text/javascript'>                    
+                          var divElement = document.getElementById('viz1653615117240');                    
+                          var vizElement = divElement.getElementsByTagName('object')[0];                    
+                          vizElement.style.width='1016px';
+                          vizElement.style.height='991px';                    
+                          var scriptElement = document.createElement('script');                    
+                          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                          vizElement.parentNode.insertBefore(scriptElement, vizElement);               
+                        </script>
+                        </div>
                     </div>
               </div>
             </div>
