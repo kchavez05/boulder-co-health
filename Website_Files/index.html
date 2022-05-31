@@ -55,47 +55,26 @@
       <!-- Explore the Dataset -->    
       <div class="rukbgcolor1">
         <div class="container-fluid">
-          <center><div class="rukspace">
-            <div class="facility-header"><h2 class="display-5">Explore the Data</h2></div>
-            <!-- <div class="callout">See how your favorite Boulder County Restaurant performs</div> -->
-            <div class="row rukspace">
-              <div class = "col-md-12 bodyText">
-                <!-- Explore Intro -->
-                <center><p class="lead"><b>Remember</b>, restaurants want <i>low</i> health inspection scores. Therefore, for each violation a restaurant receives, points are added to its score for that inspection.
-                </p><p>Please see the table for a simple explanation of scores and their meanings.</p> 
-                <p><small>For further reading on this topic and to explore the publicly-accessible Boulder County dataset, <a href="https://www.bouldercounty.org/records/licenses/restaurant-inspections-and-violations/" target="_blank">click here.</a></small></p>
-                </center>
-              </div>
-              <!-- Inspection Score Table UNSURED -->
-              <!-- <div class = "col-md-4">
-                <table class="table" style="margin-bottom: 0 !important;">
-                  <thead>
-                    <tr>
-                      <th colspan="4"><center>Inspection Score Ratings Scale</center></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Excellent</td>
-                      <td>0-19</td>
-                      <td>Fair</td>
-                      <td>40-69</td>
-                    </tr>
-                    <tr>
-                      <td>Good</td>
-                      <td>20-39</td>
-                      <td>Unacceptable</td>
-                      <td>>100</td>
-                    </tr>
-                    <tr>
-                      <td>Marginal</td>
-                      <td>70-99</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div> -->
-            </div>
-            <div class="facility-header notext"></div>
+          <center>
+            <div class="rukspace">
+              <div class="facility-header"><h2 class="display-5">Explore the Data</h2></div>
+                <div class="row rukspace">
+                  <div class = "col-md-7 bodyText" style="padding-left: 40px;">
+                    <!-- Explore Intro -->
+                    <br><br>
+                    <center><p class="lead"><b>Remember</b>, restaurants want <i>low</i> health inspection scores. Therefore, for each violation a restaurant receives, points are added to its score for that inspection.
+                    </p><p>Please see the table for a simple explanation of scores and their meanings.</p> 
+                    <p><small>For further reading on this topic and to explore the publicly-accessible Boulder County dataset, <a href="https://www.bouldercounty.org/records/licenses/restaurant-inspections-and-violations/" target="_blank">click here.</a></small></p>
+                    </center>
+                  </div>
+              <!-- Full Stat Tableau embed -->
+                  <div class = "col-md-5">
+                  <center>
+                    <div class="linkreveal"><a href="https://public.tableau.com/views/DataSummary_16539450184730/DataSummary?:language=en-US&:display_count=n&:origin=viz_share_link">To view summary statistics by city, click here.</a></div>
+                    <div class= "tableauvanish" style="margin-left: 1%; height: 325px; overflow-y: hidden;">
+                      <div class='tableauPlaceholder' id='viz1653950231308' style='position: right; width: 500px'><noscript><a href='#'><img alt='Data Summary ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;DataSummary_16539450184730&#47;DataSummary&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DataSummary_16539450184730&#47;DataSummary' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Da&#47;DataSummary_16539450184730&#47;DataSummary&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1653950231308');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='550px';vizElement.style.height='427px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='550px';vizElement.style.height='427px';} else { vizElement.style.width='100%';vizElement.style.height='827px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>                </div>
+                  </div>
+                    <div class="facility-header notext" style="margin-top: 20px;"></div>
             <!-- Javascript app -->
             <div class="row">
               <div class = "col-md-4">
@@ -114,7 +93,7 @@
               </div>
               <div class = "col-md-4">
                 <div class="panel panel-primary">
-                  <h3>Recieved Violations</h3>
+                  <h3>Received Violations</h3>
                   <div id="fac-violation-data" class="panel-body violations" onchange="buildMetadata(this.value)"></div>
                 </div>
               </div>
@@ -127,52 +106,160 @@
         <center>
           <div class="rukspace">
             <div class="facility-header"><h2 class="display-5">Interact</h2></div>
-            <div class="row">
+            <div class="row" style="margin-bottom: 1%;">
               <div class="col-md-4">
-                <h3>Understanding Google Inspection Scores</h3>
-                <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
-                </p>
+                <h3>Understanding Health Inspection Scores</h3>
+                <img src="images/Inspection_grouping.png" class="img-fluid position-relative" alt="Health Inspection Score Scales" style="width: 50%;">
               </div>
               <div class="col-md-4">
                 <h3>Google Rating Groups</h3>
-                <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
-                </p>
+                <i>Scores were binned for analysis.</i><br><br>
+                <img src="images/Ratings_grouping.png" class="img-fluid position-relative" alt="Health Inspection Score Scales" style="width: 50%;">
               </div>
               <div class="col-md-4">
-                <h3>A Third?</h3>
-                <p> Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
-                </p>
+                <h3>Violation Overview</h3>
+                <div class="scrollyscroll bodyText">
+                  <ol class="list-group list-group-numbered">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Food Source</div>
+                        <ul>
+                          <li>Approved Source</li>
+                          <li>Wholesome, free of spoilage</li>		
+                          <li>Cross-contamination		</li>
+                          <li>HACCP plan		</li>
+                          <li>Date Marking		</li>
+                          <li>Consumer Advisory	</li>
+                        </ul>
+                      </div>
+                      <span class="badge bg-ruk rounded-pill">6</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Personnel</div>
+                        <ul>
+                          <li>Personnel with infections restricted</li>
+                          <li>Wounds properly covered</li>		
+                          <li>Hands washed as needed		</li>
+                          <li>Hygenic practices		</li>
+                          <li>Smoking, eating, drinking</li>		
+                          <li>Training needed		</li>
+                          <li>No bare hand contact</li>
+                        </ul>
+                      </div>
+                      <span class="badge bg-ruk rounded-pill">7</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Food Temperature Control</div>
+                        <ul>
+                          <li>Rapidly cool to 41 F or lower</li>		
+                          <li>Rapidly reheat to 165 F or greater		</li>
+                          <li>Hot hold at 135 F or greater		</li>
+                          <li>Required cooking temperatures		</li>
+                          <li>Cold hold at 41 F or lower		</li>
+                          <li>Food thermometer (probe type)		</li>
+                          <li>Adequate equipment to food maintain temperatures</li>
+                        </ul>
+                      </div>
+                      <span class="badge bg-ruk rounded-pill">7</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Sanitization Rinse</div>
+                        <ul>
+                          <li>Manual</li>	
+                          <li>Mechanical</li>	
+                          <li>In-place	</li>
+                        </ul>
+                      </div>
+                      <span class="badge bg-ruk rounded-pill">3</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Water, Sewage, Plumbing Systems</div>
+                        <ul>
+                          <li>Safe water source	</li>
+                          <li>Hot and cold water under pressure	</li>
+                          <li>Backflow	</li>
+                          <li>Sewage disposal	      </li>                    
+                        </ul>
+                      </div>
+                      <span class="badge bg-ruk rounded-pill">4</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Handwashing and Toilet Facilities</div>
+                        <ul>
+                          <li>Adequate number, location, design	</li>
+                          <li>Accessible	</li>
+                          <li>Soap and drying devices	</li>                          
+                        </ul>
+                      </div>
+                      <span class="badge bg-ruk rounded-pill">3</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Pest Control</div>
+                        <ul>
+                          <li>Evidence of pests	</li>
+                          <li>Pesticide application	</li>
+                          <li>Animals prohibited	       </li>                   
+                        </ul>
+                      </div>
+                      <span class="badge bg-ruk rounded-pill">3</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Poisonous or Toxic Items</div>
+                        <ul>
+                          <li>Properly stored	</li>
+                          <li>Properly labeled	</li>
+                          <li>Toxic items properly used</li>	                          
+                        </ul>
+                      </div>
+                      <span class="badge bg-ruk rounded-pill">3</span>
+                    </li>
+                  </ol>
+              </div>
               </div>
               </div>
               <div class="rukbgcolor1">
                 <div class="row">
                   <div class="col-md-12">
-                    <div class='tableauPlaceholder' id='viz1653615117240' style='position: relative'>
-                      <noscript>
-                        <a href='#'>
-                          <img alt='Score Exploration ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W2M844HSK&#47;1_rss.png' style='border: none' /></a>
-                      </noscript>
-                      <object class='tableauViz'  style='display:none;'>
-                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                        <param name='embed_code_version' value='3' /> 
-                        <param name='path' value='shared&#47;W2M844HSK' /> 
-                        <param name='toolbar' value='yes' />
-                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W2M844HSK&#47;1.png' /> 
-                        <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
-                        <param name='display_overlay' value='yes' /><param name='display_count' value='yes' />
-                        <param name='language' value='en-US' /></object></div>                
-                        <script type='text/javascript'>                    
-                          var divElement = document.getElementById('viz1653615117240');                    
-                          var vizElement = divElement.getElementsByTagName('object')[0];                    
-                          vizElement.style.width='1016px';
-                          vizElement.style.height='991px';                    
-                          var scriptElement = document.createElement('script');                    
-                          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
-                          vizElement.parentNode.insertBefore(scriptElement, vizElement);               
+                    <br>
+                    <div class="linkreveal"><a href="https://public.tableau.com/app/profile/kyler.chavez/viz/boulder_health_data_score_exploration/ScoreExploration">To interact with our Tableau Dashboard on a mobile device, please click here.</a></div>
+                    <div class ="tableauvanish">
+                      <div class='tableauPlaceholder' id='viz1653615117240' style='position: relative'>
+                        <noscript>
+                          <a href='#'>
+                            <img alt='Score Exploration ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W2M844HSK&#47;1_rss.png' style='border: none' /></a>
+                        </noscript>
+                        <object class='tableauViz'  style='display:none;'>
+                          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                          <param name='embed_code_version' value='3' /> 
+                          <param name='path' value='shared&#47;W2M844HSK' /> 
+                          <param name='toolbar' value='yes' />
+                          <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;W2&#47;W2M844HSK&#47;1.png' /> 
+                          <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
+                          <param name='display_overlay' value='yes' /><param name='display_count' value='yes' />
+                          <param name='language' value='en-US' /></object></div>                
+                          <script type='text/javascript'>                    
+                            var divElement = document.getElementById('viz1653615117240');                    
+                            var vizElement = divElement.getElementsByTagName('object')[0];                    
+                            vizElement.style.width='1016px';
+                            vizElement.style.height='991px';                    
+                            var scriptElement = document.createElement('script');                    
+                            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                            vizElement.parentNode.insertBefore(scriptElement, vizElement);               
                         </script>
-                        </div>
+                        </div>  
+                      </div>
                     </div>
               </div>
+              <br>
+              <button type="button" class="btn btn-light" style="position:relative; margin-left: 90%;">Vizualisations</button>
+              <br>
             </div>
           </center>
         </div>

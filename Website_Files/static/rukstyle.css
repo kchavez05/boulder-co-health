@@ -29,7 +29,7 @@
 
   /* Spacing & General */
   .rukspace {
-    padding: 0px 20px 20px 20px;
+    padding: 0px 35px 20px 20px;
   }
   .container-fluid {
     padding: 0px;
@@ -63,6 +63,7 @@
   b {
     font-weight: 600;
   }
+
   .titleimg {
     width: 100%;
     height: 250px;
@@ -76,9 +77,9 @@
   .display {
     padding: 20px 20px 50px 20px;
   }
-  /* .col-md-4 {
-    padding-top:20px;
-  } */
+  .col-md-4 h3{
+    margin-top:1%;
+  }
   .col-md-4 h6 {
     font-weight: bold;
     text-align: left;
@@ -108,6 +109,7 @@
     height:200px;
     overflow-y:scroll;
     text-align: left;
+    padding-right: 20px;
   }
   violationsdis h6 {
     text-align: left !important;
@@ -116,8 +118,32 @@
     content: "\a";
     white-space: pre;
   }
+  .linkreveal {
+    display: none;
+  }
 
-  /* Tableau Styling
-  .tableauPlaceholder {
-    width: 100%;
-  } */
+  /* Interact Styling */
+  .scrollyscroll{
+    height:225px;
+    overflow-y:scroll;
+
+  }
+
+  .bg-ruk{
+    background-color: rgba(17, 25, 116, 0.2);
+    color:#000000;
+  }
+
+/* Media Rules for Tableau Embeds */
+@media only screen and (max-width: 1000px) {
+  .tableauvanish {
+    display: none;
+  }
+  .linkreveal {
+    display:contents;
+  }
+  .scrollyscroll{
+    height:300px;
+    overflow-y:scroll;
+  }
+}
