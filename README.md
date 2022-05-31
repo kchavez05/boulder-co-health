@@ -52,7 +52,7 @@ https://www.bouldercounty.org/families/food/restaurant-inspection-data/
 
     A. Using Google Geocode API, the Google coordinates for the restaurants were imported into the data set. The address provided in the inspection data was the key for matching the Google coordinates. If repeated, we would recommend pulling the entire geometry from Google and not just the coordinates. 
 
-    B. Used the Google Nearby Search API and matching on Facility Name, Coordinates and ranked by distance. The first API call fielded 725 successful results out of 1078 to incorporate Google rating, price level, status and total number of ratings. If a restaurant did not have one of these 4 datapoints, it would fail on matching any of them. With adjustments to the code and another glass of wine, the try-except was updated to a try-continue. This yielded only 52 failed matches, compared to the 353 in the original pull. Success!
+    B. Used the Google Nearby Search API with matching on Facility Name and Coordinates and ranked by distance. The first API call fielded 725 successful results out of 1078 to incorporate Google rating, price level, status and total number of ratings. If a restaurant did not have one of these 4 datapoints, it would fail on matching any of them. With adjustments to the code and another glass of wine, the try-except was updated to a try-continue. This yielded only 52 failed matches, compared to the 353 in the original pull. Success!
 
     C. A bit more data cleaning in Python to drop all restaurants with a 0 rating with Google, as the lowest rating you can recieve on Google is a 1. The code then was exported as a CSV for the Postgres Database. 
 
@@ -60,7 +60,7 @@ https://www.bouldercounty.org/families/food/restaurant-inspection-data/
 
     A. Filtered to include only Facility ID and inspection and violation-related columns, as all other data will be provided by Google.
 
-    B. Investigated null values in Violation Type and Violation Status columns. Null Violation Type was eliminated; null Violation Status would be addressed in SQL.
+    B. Investigated null values in Violation Type and Violation Status columns. Null Violation Type was ignored; null Violation Status would be addressed in SQL.
 
     C. After inspecting datatypes and changing Inspection Date to a datetime datatype, the data was exported to a new CSV to be loaded into the database.
 
