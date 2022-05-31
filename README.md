@@ -165,7 +165,7 @@ For simplicity's sake and because it provided comparable results to more complex
 
 
 ## Presentation
-Below is the Google slide presentation, which is embeded in the website. Our actual website will serve the purpose of this presentation by narrating the story, hand on of our analysis.
+Below is the Google slide presentation, which is embedded in the website. Our actual website will be used in our presentation as an interactive means of experiencing the narrative of our analysis.
 
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-1.JPG)
 ![img](https://github.com/kchavez05/boulder-co-health/blob/dev/Images/presentation-2.JPG)
@@ -179,7 +179,7 @@ Below is the Google slide presentation, which is embeded in the website. Our act
 #### Interactive Pieces:
 1. Built into the landing page, there is a quick reference drop down to check all of the data points for a specific restuatant.
 
-2. Scrolling down to the bottom is the interactive tableau library which give a filler landscape on the relationships between health inspection score and google rating. Below are a few selected dashbaord images. 
+2. Scrolling down to the bottom is the interactive tableau library which give a filler landscape on the relationships between health inspection score and Google rating. Below are a few selected dashboard images. 
 
 ![TOP 10](Images/top_10.png)
 
@@ -197,13 +197,12 @@ A second analysis dives into if there are any violation categories in particular
 
 ## Results
 
-The selected machine learning model can succesfully make a binary prediction of the Goggle rating for a facility. The model cannot predict the health inspection score from the Google rating.
+The selected machine learning model can succesfully make a binary prediction whether a facility will receive favorable or unfavorable reviews. The model cannot predict the health inspection score from the Google rating.
 
-There are several health violation categories that drive the strongest correlation to the Google rating for a facility. The top violations that influence the Goggle rating are water/sewage and toilets/handwashing.
+There are several health violation categories that drive the strongest correlation to the Google rating for a facility. The top violations that influence the Google rating are water/sewage and toilets/handwashing.
 
+## Recommendations
 
-## Recomendations
+Based on the data analyzed during this project, our first recommendation to restaurants is to prioritize clean bathrooms. The data shows that this specific violation category has the strongest correlation to a negative Google rating.
 
-Based on the data analyzed during this project, our first recomendation to restuarants is to prioritize clean bathrooms. The data shows that this specific violation category has the strongest correlation to a negative Google rating.
-
-The second reccomendation for ongoing data analysis is to expand the data to include new jurisdictions. Developing a model that spans the state of Colorado would allow users to find a clean restaurant. One challenge to this expansion is that not all of the counties hold the same data integrity for health inspections as Boulder country so due diligence is required to normalize and clean all datasets before combining into one larger one.
+The second recommendation for ongoing data analysis is to expand the data to include new jurisdictions. Developing a model that spans the state of Colorado would allow users to find a clean restaurant and data analysts to develop interesting geographic comparisons and more broadly generalizable conclusions. There are several challenges inherent to suh an expansion of our analysis, however: not only is health inspection data less publicly accessible in some counties, the datasets available do not have a standard structure. Due diligence is therefore required to normalize and clean all available datasets before combining them into a larger one.
