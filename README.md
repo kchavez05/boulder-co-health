@@ -2,16 +2,15 @@
 
 ## Background
 
-Members of the group have worked in the restaurant industry and have experience with the inspection process. There are general rules of thumb passed down from manager to manager to pass the inspection process. We thought it would be interesting to build a data driven model to test the relationship between a restaurant's health inspection score and its customer rating on Google and test the correlations of violation categories. 
+Members of the group have worked in the restaurant industry and have experience with the health inspection process. There are well regarded rules passed down from manager to manager in ways of improving a facility's ability to pass the health inspection process. We thought it would be interesting to build a data driven model to test the relationship between a restaurant's health inspection score and its customer rating on Google and to further test the correlation of the types of health inspection violations that contribute to customer's perceptions of the restaurant. 
 
 ## Objective
 
-Our group selected the topic of health inspection scores from Boulder Country, Colorado restaurants and the corresponding reviews provided to those establishments on Yelp and Google.
+The topic of health inspection scores from Boulder Country, Colorado restaurants and the corresponding reviews provided to those establishments on Google were the focus of this project.
 
 ## Hypothesis
-
-    - There is a correlation between health inspection scores and Google ratings
-    - Some violation categories will have higher impacts on Google ratings than others
+- There is a correlation between health inspection scores and Google ratings.
+- Some violation categories have a higher impact on Google ratings than others.
 
 ## Project Steps:
 
@@ -43,7 +42,7 @@ https://www.bouldercounty.org/families/food/restaurant-inspection-data/
 - Google, Tableau, Trello, Google Docs and Slides
 
 
-## (2) Scrubbing the data
+## (2) Scrubbing the Data
 
 1. Inspection data: basic filtering
 
@@ -133,7 +132,7 @@ Since the data used for this project is static, we chose not to figure out how t
 
     C. A list of all violation titles at each facility was created for lookup via the website
 
-## (4) Deployed Machine Learning Models
+## (4) Machine Learning Model Selection
 
 The process of choosing a Machine Learning (ML) model started with confirming the hypothesis that the Google Rating could be predicted using the Health Inspection Scores. Initial engineering of the datasets required binning the Health Inspection Scores (1 to 5) and the Google Ratings (1 to 5). The initial accuracy scores from three ML models (Logistic Regression, Support Vector Machine and RandomForest) showed a low accuracy level of 59%. In order to increase accuracy, the Google Ratings were binned to create a binary score (High and Low). Based on the distribution of all Google Ratings in the dataset, 4.51 was determined to be the dividing line between High and Low Google Ratings.
 
@@ -198,13 +197,13 @@ A second analysis dives into if there are any violation categories in particular
 
 ## Results
 
-The machine learning model can succesfully make a binary prediction in on direction (input = Inspection score) but not the other way around.
+The selected machine learning model can succesfully make a binary prediction of the Goggle rating for a facility. The model cannot predict the health inspection score from the Google rating.
 
-The two inspection categories of toilets, handwashing and personnel drive the strongest correlation in effecting the google rating.
+There are several health violation categories that drive the strongest correlation to the Google rating for a facility. The top violations that influence the Goggle rating are water/sewage and toilets/handwashing.
 
 
 ## Recomendations
 
-Our first recomendation to restuarants are to prioritize clean bathrooms, as that specifc violation category has the strongest correlation to a negative google rating.
+Based on the data analyzed during this project, our first recomendation to restuarants is to prioritize clean bathrooms. The data shows that this specific violation category has the strongest correlation to a negative Google rating.
 
-The second reccomendation is to expand. Expanding the data further out to new jurisdictions, so the interactive website can be used across Colorado to find a clean restaurant and guage where a restaurant will fit in the landscape of this analysis. One caveat is that not all of the counties hold the same data integrity for health inspections as Boulder country so due diligence is required to normalize and clean all datasets to combine into one larger one.
+The second reccomendation for ongoing data analysis is to expand the data to include new jurisdictions. Developing a model that spans the state of Colorado would allow users to find a clean restaurant. One challenge to this expansion is that not all of the counties hold the same data integrity for health inspections as Boulder country so due diligence is required to normalize and clean all datasets before combining into one larger one.
