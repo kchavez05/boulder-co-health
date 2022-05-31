@@ -1,5 +1,5 @@
 
---create datasets for machine learning
+--create datasets for machine learning on inspection score
 select distinct
 	f.facility_id,
 	i.inspection_date,
@@ -49,19 +49,11 @@ from (
 order by 1
 ;
 
+--generate columns needed for crosstab
 select distinct violation_code_norm||' int ,' from violations_norm order by 1;
 
-
-select distinct
-	facility_id,
-	max(case when coalesce(violation_code,0::varchar) = '01A' then 1 else 0 end) over (partition by facility_id)
-from violations;
-
-
-select * from violations_norm;
-
 --create pivot table of whether a facility has ever received a particular violation
-
+drop table binary_violations_pivot;
 create table binary_violations_pivot as
 select *
 from crosstab(
@@ -122,7 +114,6 @@ as
 	FC43 int ,
 	FC44 int ,
 	FC45 int ,
-	FC46 int ,
 	FC47 int ,
 	FC48 int ,
 	FC49 int ,
@@ -138,7 +129,7 @@ as
 ;
 
 select * from binary_violations_pivot;
-select * from violations where violation_code = 'FC12';
+
 
 --create pivot table of the number of times a facility has received a particular violation
 drop table violations_count_pivot;
@@ -215,7 +206,7 @@ as
 	FC57 int 
 )
 ;
-select distinct violation_category from violations_norm order by 1;
+select * from violations_count_pivot;
 
 --create pivot table of whether a facility has ever received a violation of a particular category
 drop table binary_violation_cats_pivot;
@@ -254,6 +245,7 @@ as
 	 cat_13 int,
 	 cat_14 int)
 ;
+select * from binary_violation_cats_pivot;
 
 --create pivot table of the number of times a facility has ever received a violation of a particular category
 drop table violation_cat_counts_pivot;
@@ -294,12 +286,9 @@ as
 ;
 
 select * from violation_cat_counts_pivot;
-select distinct
-	facility_id,
-	count(distinct inspection_id)
-from inspections
-group by facility_id;
 
+
+--create more readable crosswalk from old to new violations
 drop table violations_crosswalk_readable;
 select distinct
 	cw.violation_category,
@@ -317,8 +306,16 @@ from violations_crosswalk cw
 order by 1,3,5
 ;
 
-
-
+--create list of all violation titles per facility
+select distinct
+	v.facility_id,
+	v.inspection_date,
+	vn.vcat_title violation_category,
+	lower(v.violation)
+from violations v
+	join violations_norm vn
+		on v.violation_code = vn.violation_code
+order by 1,2
 
 
 
