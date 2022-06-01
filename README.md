@@ -177,15 +177,11 @@ Below is the Google slide presentation, which is embedded in the website. Our ac
 
 
 #### Interactive Pieces:
-1. Built into the landing page, there is a quick reference drop down to check all of the data points for a specific restuatant.
+We have two interactive Tableau dashboards integrated into our website:
 
-2. Scrolling down to the bottom is the interactive tableau library which give a filler landscape on the relationships between health inspection score and Google rating. Below are a few selected dashboard images. 
+[Boulder Health Data Score Exploration](https://public.tableau.com/app/profile/kyler.chavez/viz/boulder_health_data_score_exploration/ScoreExploration) explores overall trends in the data
 
-![TOP 10](Images/top_10.png)
-
-![BOTTOM 10](Images/bottom_10.png)
-
-![Heatmap](Images/interactive_ratings_by_city.png)
+[Boulder County Inspections and Ratings](https://public.tableau.com/app/profile/kelsey.mosbarger/viz/BoulderCountyInspections/BoulderCountyInspectionsRatings) is geared towawrds helping a potential diner to choose a restaurant and includes relevant information for individual facilities.
 
 ## Summary
 
