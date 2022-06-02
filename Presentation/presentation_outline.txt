@@ -1,0 +1,72 @@
+Presentation Outline
+Google Slides Presentation
+Intro - 3 min
+Data Prep - 3 min
+Machine Learning - 3 min
+—
+Switch to Website
+
+Website Design/functionality - 1 min
+Conclusions/Visualizations - 5 min
+Introduction
+Good evening!  Thank you all for the opportunity to present our data project to you. Let’s get right into it.
+We set out to answer the question – [PRESS BUTTON - NEXT SLIDE] is there a correlation between restaurant health inspection scores and Google rating?  [PRESS BUTTON] If so, are there particular violations that have a bigger impact on Google rating than others?
+The reason we chose this hypothesis was because it could go either way!  It seems intuitive that a cleaner restaurant would provide a better guest experience, and a dirtier restaurant would provide a worse guest experience.  However, we all know [PRESS BUTTON - NEXT SLIDE] “Tamale guy”.  You know, that guy on the corner serving up foil-wrapped tamales out of a cooler?  What are the chances that he’s hitting every point on his health inspection? That’s not to say he couldn’t, but eating delicious food in less-than-sanitary conditions is somewhat of a universal experience. And, for the record, he did pass his pre-opening inspection for his brick & mortar store, it just took three tries. [PRESS BUTTON - NEXT SLIDE]
+In order to explore these ideas, we used a publicly available data set from Boulder County and compared routine restaurant health inspection scores from 2016-2019 against ratings drawn from the Google Places API.  [PRESS BUTTON - NEXT SLIDE]
+To set some context – health inspection scores are calculated by adding up points accumulated for infractions.  So, a score of zero is perfect – and a score of more than 100 is deemed “unacceptable” by Boulder County Health.  The Google ratings are zero through five stars – five stars being the best score. [PRESS BUTTON - NEXT SLIDE]
+Our raw dataset included almost 500,000 rows.  That is every inspection of every foodservice facility – including grocery stores, butcher shops, gas stations and school cafeterias – from 2016 to present.  In order to pare down the data we wanted to look at only routine inspections of restaurants.  What we mean by routine is a surprise, regular inspection.  In a routine inspection the health inspector just shows up unannounced and starts poking thermometers in things, making sure food isn’t stored with chemicals, etc.  This eliminated voluntary inspections and other inspection types that aren’t necessarily representative of a restaurant’s actual compliance with health code.  After pulling ratings data using the Google Places API, we were able to explore our first question: is there a correlation between restaurant health inspection scores and Google rating?
+The second part of our analysis dove into the individual criteria to see if there were particular violations that had a more significant impact on Google rating.  As a veteran of the restaurant industry I was taught by a mentor of mine: “To judge the cleanliness of a restaurant start in the bathroom.  If the bathrooms are dirty, the whole place is dirty.”  We wanted to see if the data proved that to be true.
+Without further ado, the rest of the team will walk you through how we cleaned and analyzed our data, and then we’ll address both of our hypotheses.
+Data prep 
+Two datasets: publicly available Boulder County inspection data, + ratings and general restaurant info from Google
+Datasets merged by pulling coordinates for the addresses in the health department data using Google Geocode, then cross-referencing facility name and coordinates against Google Nearby Search (next slide)
+Basic filtering done in Pandas, then most structuring and transformation of data done in a postgres database
+Several levels of filtering and normalization necessary to ensure data clean, accurate, and free of noise
+Only routine inspections from before 2020
+Only facilities that could reasonably be considered restaurants: no catering events, school cafeterias, etc.
+Only violations where we were at least reasonably sure a facility had been found out of compliance (next slide)
+Violations from two different health inspection systems equated and categorized
+Scoring system changed in 2019
+All old violations matched with closest new violation for apples-to-apples comparison of facilities
+Old system had advantage of categories; these were used, with a few tweaks, to group the crosswalked violations and help with feature reduction
+After data sufficiently transformed and normalized, datasets curated and output as CSVs for use in machine learning and visualization, depending on what information needed for each use case
+Pivot tables for machine learning on the individual violations that would allow the algorithm to learn on single violations or violation categories observed for each facility
+Binary vs. counts
+Machine learning
+For the machine learning selection process, we started with the average health inspection scores by facility. Again, we limited our dataset to health inspection scores prior to 2020 as we didn't want any pandemic variable to interfere with our analysis. Boulder County Health Department rates health inspection scores from Excellent to Unacceptable in 5 buckets. Our initial attempt at machine learning looked at predicting the Google rating (1 to 5) from the Health Scores (1 to 5). The initial machine learning results showed 59% accuracy. By creating a binary Google rating (Low to High) we increased the accuracy to 73%.
+Next we wanted to figure out which of the violations contributed to the Google Ratings. Chi-squared was used to determine the relationship between the violations and the target value (Google rating). Along with the type of facility and the category of the facility, we analyzed all the violations in two ways - whether a facility had ever gotten a particular violation and the number of times a facility received a particular violation. Chi-squared helped identify 7 features to use in the machine learning model. Interestingly, the violations most impactful on the Google rating dealt with water/sewage and toilets/handwashing. Which really enforces the restaurant age-old saying - if you want to know how clean a restaurant is, start in the bathroom.
+The final step in selecting the machine learning model was to use the 7 features through 5 machine learning models and compare the accuracy scores. Logistic Regression was selected as our machine learning model, because of its simplicity and ability for probabilistic predictions. Even using a boosting algorithm did not increase the accuracy of predicting the Google Rating from the Health Inspection Scores and the most relevant violations.
+Design/Website
+We wanted the website to be simple, easy-to-read, and responsive on all platforms. We chose a medium-contrast color palette and responsive block elements utilizing Bootstrap 5 to achieve this goal.
+From the dataset used in the final machine learning model, we programmed a javascript app to display average inspection scores and review numbers. The violations each restaurant received between 2016 and 2019 with the date are also displayed when you switch between facilities.
+We have included keys that reference Health inspection scores and Google ratings, along with a simplified read-out of the violations we examined.
+If you’ve been to a restaurant in Boulder County, we urge you to look through our dataset to see how that restaurant performed!
+Dashboard stuff
+For all visualizations and preliminary observations we used Tableau and we included 2 integrated dashboards on our site. 
+
+For the first:
+Here’s a map of the restaurants on Boulder County colored according to their average health inspections scores.
+The data displayed in this chart indicates a correlation between worse health inspection scores and better Google ratings! We, as a group, have dubbed this ‘The Tamale Guy Effect’
+This box-and-whisker plot breaks down our facilities by price level and average health inspection scores with the highest average belonging to those restaurants in price level 3 which are representative of upscale full-service restaurants.
+This plot examines inspection scores by restaurant category - with limited service fast food trending toward lower scores. (mention limited criteria)
+Here, we examine the type of facility versus their inspection scores and we can see that smaller 
+
+Kelsey
+Top/Bottom 10:
+This is a high level comparison of the top and bottom 10 performers on health inspections.
+An interesting trend in the data is that the top 10 performers are more likely than not to be a corporate chain facility, whereas the bottom 10 performers are more likely to be independent dining facilities.
+In terms of health inspection scores, oftentimes these chain restaurants have very specific and standardized processes to ensure that health inspections are never an issue whereas these independently ran restaurants rely on the expertise of the management team to prepare for this.
+Another point I want to highlight is that you will notice that the only “high” average google ratings (per the distribution from our ML work) are the restaurants at the very bottom! 
+Browsing through google ratings for the top and bottom restaurant, the main topic of the review is the food in relation to the raters expectations and the experience for these two specific establishments. A 1* review at t/aco boulder is that the meat was spoiled and curdling queso, where as a 1* rating with the same weight at einsteins, is that the bagel didn’t have enough cream cheese and lox.
+This shows the idea that essentially people would rather go enjoy a marg and a taco (disregarding the number of food temperature control or poison/toxin violations the facility received) instead of a mediocre bagel an exceptionally up to health standards place. 
+Whats for dinner?:
+This is a fun visualization to help a user get an idea of a restaurant to go to or try. You can filter by city and narrow down on rating or health score to see which restaurants fall in that category.
+
+Violation Categories:
+Now jumping over to the violations tab to left, not all violations will penalize you equally. Unlike the feature correlations that Bobbi discussed, this just shows the count of the violations and the resulting impact on the total inspections score.   Across the board Personnel violations tend to happen the most often but result in less of an impact to your overall inspection score than food temperature control.
+This graph allows you to choose the specific facility that caught your interest on that previous page to get an idea of what they were not up to code for and to make sure those clean bathrooms are a priority there before you go!
+Conclusion
+Due to our time constraints, we only reviewed a few visualizations, but please visit our site to interact with the rest of our results. I’ve placed our site in the live tth slack channel
+The inspection category with the strongest correlation to google score are the bathrooms/toilets, indicating that these have the most impact on ratings –  just as we suspected at the start!
+And finally, there is a one-way correlation between health inspection score and Google rating: you can predict whether a restaurant will get good ratings from its inspection score, but you cannot predict inspection score from ratings.
+
