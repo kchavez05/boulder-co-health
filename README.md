@@ -180,7 +180,8 @@ Below is the Google slide presentation, which is embedded in the website. Our ac
 
 #### Interactive Pieces:
 A Javascript app containing our final dataset is explorable on the home page. It lays out each restaurant's statistics, including Google rating, average violation score, average violation count, and the total number of reviews. A read-out of the violations the restaurant received before 2020 is also accessible. 
-        * JSON files containing our dataset were created and exported using Python.
+
+     * JSON files containing our dataset were created and exported using Python.
     
 We have two interactive Tableau dashboards integrated into our website:
 
