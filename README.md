@@ -89,7 +89,7 @@ Since the data used for this project is static, we chose not to figure out how t
 
 5. An Inspections table was created to house only the facility ID, inspection date, and inspection score from each individual inspection. An inspection ID was generated as an identity column to help later in identifying violations observed during the same inspection.
 
-6. A violations table was created to document the violations documented in each inspection. Since the source data contained several violation statuses that did not indicate that a violation had actually been observed, as well as sume null statuses, this was done in several steps:
+6. A violations table was created to document the violations documented in each inspection. Since the source data contained several violation statuses that did not indicate that a violation had actually been observed, as well as some null statuses, this was done in several steps:
 
     A. The table was created using rows where a facility had an "Out" status (meaning it was out of compliance).
     
@@ -194,7 +194,7 @@ A second analysis dives into if there are any violation categories in particular
 
 The selected machine learning model can succesfully make a binary prediction whether a facility will receive favorable or unfavorable reviews. The model cannot predict the health inspection score from the Google rating.
 
-There are several health violation categories that drive the strongest correlation to the Google rating for a facility. The top violations that influence the Google rating are water/sewage and toilets/handwashing.
+There are several health violation categories that drive the strongest correlation to the Google rating for a facility. The top violations that influence the Google rating are those in the water/sewage and toilets/handwashing categories.
 
 ## Recommendations
 
