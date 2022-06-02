@@ -172,7 +172,7 @@ Below is the Google slide presentation, which is embedded in the website. Our ac
 
 
 ## (7) Interactive Website Build
-#### Website Build out :
+#### Website Build out : [Link to Website Deployment](https://kchavez05.github.io/boulder-co-health/) 
 1.   The site was built on Bootstrap 5 framework using their most up-to-date documentation. Included here was updated code to handle text-size at different screen widths, responsive block elements utilizing Bootstrap's column system, more advanced styling options on the Javascript components, and the inclusion of a styled navigation bar. 
 2. We added custom CSS to handle images, spacing, typography, and the addition of internal scroll boxes to prevent overlong sections.
 3.   Tableau elements were also hidden on smaller screen widths via HTML and CSS. 
