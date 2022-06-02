@@ -173,9 +173,15 @@ Below is the Google slide presentation, which is embedded in the website. Our ac
 
 ## (7) Interactive Website Build
 #### Website Build out :
-
+1.   The site was built on Bootstrap 5 framework using their most up-to-date documentation. Included here was updated code to handle text-size at different screen widths, responsive block elements utilizing Bootstrap's column system, more advanced styling options on the Javascript components, and the inclusion of a styled navigation bar. 
+2. We added custom CSS to handle images, spacing, typography, and the addition of internal scroll boxes to prevent overlong sections.
+3.   Tableau elements were also hidden on smaller screen widths via HTML and CSS. 
+4. We created custom HTML elements to handle the data given to the Javascript app. 
 
 #### Interactive Pieces:
+A Javascript app containing our final dataset is explorable on the home page. It lays out each restaurant's statistics, including Google rating, average violation score, average violation count, and the total number of reviews. A read-out of the violations the restaurant received before 2020 is also accessible. 
+     * JSON files containing our dataset were created and exported using Python.
+    
 We have two interactive Tableau dashboards integrated into our website:
 
 [Boulder Health Data Score Exploration](https://public.tableau.com/app/profile/kyler.chavez/viz/boulder_health_data_score_exploration/ScoreExploration) explores overall trends in the data
